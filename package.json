@@ -1,0 +1,22 @@
+{
+  "name": "callof2d",
+  "version": "1.0.0",
+  "description": "Our web app final",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swc1098/CallOf2D.git"
+  },
+  "author": "Sung Choi and Zach Bebel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swc1098/CallOf2D/issues"
+  },
+  "homepage": "https://github.com/swc1098/CallOf2D#readme",
+  "dependencies": {
+    "lockstep.io": "^0.1.0"
+  }
+}

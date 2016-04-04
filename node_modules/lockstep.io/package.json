@@ -1,0 +1,71 @@
+{
+  "_args": [
+    [
+      "lockstep.io",
+      "C:\\Users\\Choi\\Documents\\CallOf2D"
+    ]
+  ],
+  "_from": "lockstep.io@latest",
+  "_id": "lockstep.io@0.1.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/lockstep.io",
+  "_nodeVersion": "0.12.4",
+  "_npmUser": {
+    "email": "consult@osci.international",
+    "name": "adrian_seeley"
+  },
+  "_npmVersion": "2.10.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "lockstep.io",
+    "raw": "lockstep.io",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/lockstep.io/-/lockstep.io-0.1.0.tgz",
+  "_shasum": "d3498c2f7c2e2baee4838f0f94211b3335ec1fa7",
+  "_shrinkwrap": null,
+  "_spec": "lockstep.io",
+  "_where": "C:\\Users\\Choi\\Documents\\CallOf2D",
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/InkhornGames/lockstep.io/issues"
+  },
+  "dependencies": {
+    "socket.io": "^1.3.5"
+  },
+  "description": "A drop in Unity and NodeJS, Socket.IO based \"Lockstep\" implementation to support rapid development of online games in Unity.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "d3498c2f7c2e2baee4838f0f94211b3335ec1fa7",
+    "tarball": "https://registry.npmjs.org/lockstep.io/-/lockstep.io-0.1.0.tgz"
+  },
+  "gitHead": "9c61f1bb8310d50d396ae889f03fce8c0e1cad9a",
+  "homepage": "https://github.com/InkhornGames/lockstep.io",
+  "license": "ISC",
+  "main": "./nodejs/lockstep.io.js",
+  "maintainers": [
+    {
+      "name": "adrian_seeley",
+      "email": "consult@osci.international"
+    }
+  ],
+  "name": "lockstep.io",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InkhornGames/lockstep.io.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.1.0"
+}
