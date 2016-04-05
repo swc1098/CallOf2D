@@ -22,6 +22,10 @@ public class LockstepIOComponent : MonoBehaviour
 	public bool LockstepReady;
 	public long CommandDelay;
 
+	// Test Player
+	Rigidbody2D testBody;
+
+
 	public long LocalNow {
 		get {
 			return (long)Time.frameCount;
@@ -68,6 +72,9 @@ public class LockstepIOComponent : MonoBehaviour
 	{
 		// Synchronize lockstep with the server first
 		Sync ();
+
+		// Find test Player in scene
+		testBody = GameObject.Find ("Player").GetComponent<Rigidbody2D> ();
 	}
 
 	public void Update ()
@@ -75,6 +82,8 @@ public class LockstepIOComponent : MonoBehaviour
 		// Ensure lockstep is ready before issuing commands
 		if (LockstepReady) {
 			JSONObject j = new JSONObject ();
+
+			// Signal Player movement
 
 			// on up arrow 
 			if (Input.GetKey (KeyCode.W)) {
@@ -108,8 +117,7 @@ public class LockstepIOComponent : MonoBehaviour
 
 	public void ExecuteCommand (JSONObject Command)
 	{
-		Rigidbody2D testBody = GameObject.Find ("Player").GetComponent<Rigidbody2D> ();
-
+		// Apply Player Movement
 		float speed = 200;
 		float x = 0;
 		float y = 0;
