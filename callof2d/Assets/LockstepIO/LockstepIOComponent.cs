@@ -79,32 +79,7 @@ public class LockstepIOComponent : MonoBehaviour
 
 	public void Update ()
 	{
-		// Ensure lockstep is ready before issuing commands
-		if (LockstepReady) {
-			JSONObject j = new JSONObject ();
-
-			// Signal Player movement
-
-			// on up arrow 
-			if (Input.GetKey (KeyCode.W)) {
-				j.AddField ("y", 1);
-			}
-            // on down arrow
-			else if (Input.GetKey (KeyCode.S)) {
-				j.AddField ("y", -1);
-			}
-			// on left arrow
-			if (Input.GetKey (KeyCode.A)) {
-				j.AddField ("x", -1);
-			}
-            // on right arrow
-			else if (Input.GetKey (KeyCode.D)) {
-				j.AddField ("x", 1);
-			}
-			// issue the command above
-			IssueCommand (j);
-
-		}
+		// Issue command code
 	}
 
 	public void IssueCommand (JSONObject Command)
