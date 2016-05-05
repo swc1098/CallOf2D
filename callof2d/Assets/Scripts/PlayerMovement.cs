@@ -32,28 +32,31 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 j.AddField("y", 1);
-                j.AddField("gameobject", gameObject.GetInstanceID());
             }
             // on down arrow
             else if (Input.GetKey(KeyCode.S))
             {
                 j.AddField("y", -1);
-                j.AddField("gameobject", gameObject.GetInstanceID());
             }
             // on left arrow
             if (Input.GetKey(KeyCode.A))
             {
                 j.AddField("x", -1);
-                j.AddField("gameobject", gameObject.GetInstanceID());
             }
             // on right arrow
             else if (Input.GetKey(KeyCode.D))
             {
                 j.AddField("x", 1);
-                j.AddField("gameobject", gameObject.GetInstanceID());
             }
+
             // issue the command above
-            lockstep.IssueCommand(j);
+            // Only issue commands if there are commands to issue
+            //Debug.Log(j.Count);
+            if (j.Count > 0)
+            {
+                j.AddField("gameobject", gameObject.GetInstanceID());
+                lockstep.IssueCommand(j);
+            }
 
         }
 
