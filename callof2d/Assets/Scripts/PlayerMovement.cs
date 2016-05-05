@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour
+{
 
     public float moveSpeed = 0f;
     private float movex = 0f;
@@ -10,12 +11,15 @@ public class PlayerMovement : MonoBehaviour {
     private LockstepIOComponent lockstep;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         lockstep = GameObject.Find("NetworkScripts").GetComponent<LockstepIOComponent>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        gameObject.StoreID();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
 
         // Ensure lockstep is ready before issuing commands
         if (lockstep.LockstepReady)
@@ -28,21 +32,25 @@ public class PlayerMovement : MonoBehaviour {
             if (Input.GetKey(KeyCode.W))
             {
                 j.AddField("y", 1);
+                j.AddField("gameobject", gameObject.GetInstanceID());
             }
             // on down arrow
             else if (Input.GetKey(KeyCode.S))
             {
                 j.AddField("y", -1);
+                j.AddField("gameobject", gameObject.GetInstanceID());
             }
             // on left arrow
             if (Input.GetKey(KeyCode.A))
             {
                 j.AddField("x", -1);
+                j.AddField("gameobject", gameObject.GetInstanceID());
             }
             // on right arrow
             else if (Input.GetKey(KeyCode.D))
             {
                 j.AddField("x", 1);
+                j.AddField("gameobject", gameObject.GetInstanceID());
             }
             // issue the command above
             lockstep.IssueCommand(j);
