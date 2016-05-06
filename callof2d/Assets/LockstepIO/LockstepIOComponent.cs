@@ -99,30 +99,15 @@ public class LockstepIOComponent : MonoBehaviour
 
     public void ExecuteCommand(JSONObject Command)
     {
-        // Apply Player Movement
-        float speed = 200;
-        float x = 0;
-        float y = 0;
-        GameObject obj;
-
         if (Command.HasField("gameobject"))
         {
-            obj = Extensions.idToObject[(int)Command.GetField("gameobject").n];
-            //Debug.Log(Command.GetField("gameobject").str);
-            //Debug.Log(g);
+            GameObject obj = Extensions.idToObject[(int)Command.GetField("gameobject").n];
 
-            // Parse Movement
-            if (Command.HasField("x"))
+            // Call by script
+            if (obj.GetComponent<Player>())
             {
-                x = (float)Command.GetField("x").n * speed;
+                obj.GetComponent<Player>().ExecuteCommand(Command);
             }
-            if (Command.HasField("y"))
-            {
-                y = (float)Command.GetField("y").n * speed;
-            }
-
-            // Apply Movement
-            obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(x, y), 0);
         }
 
     }
