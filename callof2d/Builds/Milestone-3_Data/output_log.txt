@@ -1,0 +1,549 @@
+Initialize engine version: 5.3.4f1 (fdbb5133b820)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 5600 (ID=0x1612)
+    Vendor:   Intel
+    VRAM:     2064 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.100 seconds
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\System.dll (this message is harmless)
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\Mono.Security.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Initialize engine version: 5.3.4f1 (fdbb5133b820)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 5600 (ID=0x1612)
+    Vendor:   Intel
+    VRAM:     2064 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.037 seconds
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\System.dll (this message is harmless)
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\Mono.Security.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 23.576101 ms
+5/5/2016 4:19:29 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/5/2016 4:19:29 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 1ef4 -> priority: 1 
+  Thread -> id: 1974 -> priority: 1 
+5/5/2016 4:19:29 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/5/2016 4:19:29 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+UnloadTime: 0.432976 ms
+5/5/2016 4:19:32 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/5/2016 4:19:32 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 1680 -> priority: 1 
+  Thread -> id: 1fa8 -> priority: 1 
+5/5/2016 4:19:32 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/5/2016 4:19:32 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/5/2016 4:19:32 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/5/2016 4:19:32 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Initialize engine version: 5.3.4f1 (fdbb5133b820)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 5600 (ID=0x1612)
+    Vendor:   Intel
+    VRAM:     2064 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.038 seconds
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\System.dll (this message is harmless)
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\Mono.Security.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+UnloadTime: 0.455024 ms
+5/5/2016 4:20:35 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/5/2016 4:20:35 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 1efc -> priority: 1 
+  Thread -> id: 2118 -> priority: 1 
+5/5/2016 4:20:35 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/5/2016 4:20:35 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/5/2016 4:20:35 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/5/2016 4:20:35 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Initialize engine version: 5.3.4f1 (fdbb5133b820)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 5600 (ID=0x1612)
+    Vendor:   Intel
+    VRAM:     2064 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.038 seconds
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\System.dll (this message is harmless)
+Platform assembly: D:\SourceTree\CallOf2D\callof2d\Builds\Milestone-3_Data\Managed\Mono.Security.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.521928 ms
+5/5/2016 4:21:12 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/5/2016 4:21:12 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 21d0 -> priority: 1 
+  Thread -> id: f84 -> priority: 1 
+5/5/2016 4:21:12 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/5/2016 4:21:12 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/5/2016 4:21:12 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/5/2016 4:21:12 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
