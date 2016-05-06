@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         lockstep = GameObject.Find("NetworkScripts").GetComponent<LockstepIOComponent>();
+        lockstep.GetSocket().UseLocal = false;
         lockstep.GetSocket().CloudURL = "ws://zlb3507-lockstep-io-server.herokuapp.com/socket.io/?EIO=4&transport=websocket";
         lockstep.GetSocket().LocalURL = "ws://127.0.0.1:3000/socket.io/?EIO=4&transport=websocket";
     }
