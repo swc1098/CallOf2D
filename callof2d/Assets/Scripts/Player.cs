@@ -11,13 +11,21 @@ public class Player : MonoBehaviour
 
     public Rigidbody2D body;
 
+    private GameManager GM;
+
     // Use this for initialization
     void Start()
     {
         moveSpeed = 70f;
-        body = GetComponent<Rigidbody2D>();
 
-        lockstep = GameObject.Find("NetworkScripts").GetComponent<LockstepIOComponent>();
+        body = GetComponent<Rigidbody2D>();
+        body.gravityScale = 0;
+        body.drag = 10;
+        body.interpolation = RigidbodyInterpolation2D.Interpolate;
+        body.freezeRotation = true;
+        GetComponent<BoxCollider2D>().size = new Vector2(0.14f, 0.14f);
+
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         gameObject.StoreID();
     }
 
@@ -27,7 +35,7 @@ public class Player : MonoBehaviour
         deltaTime = Time.deltaTime;
 
         // Ensure lockstep is ready before issuing commands
-        if (lockstep.LockstepReady)
+        if (GM.lockstep.LockstepReady)
         {
             // Reset JSON
             j = new JSONObject();
@@ -40,7 +48,7 @@ public class Player : MonoBehaviour
             if (j.Count > 0)
             {
                 j.AddField("gameobject", gameObject.GetInstanceID());
-                lockstep.IssueCommand(j);
+                GM.lockstep.IssueCommand(j);
             }
             else
             {
@@ -74,7 +82,6 @@ public class Player : MonoBehaviour
                 y = (float)Command.GetField("setY").n;
             }
 
-            body.drag = 10;
             body.AddForce(new Vector2(x, y), ForceMode2D.Force);
             //body.velocity = Vector2.ClampMagnitude(body.velocity, moveSpeed);
         }

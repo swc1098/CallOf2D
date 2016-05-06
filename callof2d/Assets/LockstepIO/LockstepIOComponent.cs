@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using SocketIO;
@@ -22,6 +23,12 @@ public class LockstepIOComponent : MonoBehaviour
     public bool LockstepReady;
     public long CommandDelay;
 
+    public Text connectingStatus;
+
+    public SocketIOComponent GetSocket()
+    {
+        return Socket;
+    }
 
     public long LocalNow
     {
@@ -82,6 +89,9 @@ public class LockstepIOComponent : MonoBehaviour
     {
         // Synchronize lockstep with the server first
         Sync();
+
+        connectingStatus = GameObject.Find("ConnectingStatusText").GetComponent<Text>();
+        connectingStatus.text = "Connecting...";
     }
 
     public void Update()
@@ -195,6 +205,7 @@ public class LockstepIOComponent : MonoBehaviour
 
         }
         LastLockstepReadyString = debugText;
+        connectingStatus.text = "Connected!";
     }
 
     private void OnCommandIssue(SocketIOEvent evt)
