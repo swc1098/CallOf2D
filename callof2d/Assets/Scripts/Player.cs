@@ -6,13 +6,24 @@ public class Player : MonoBehaviour
     public float moveSpeed;
     private float deltaTime;
 
+    private float lerpTime;
+    private float lerpSpeed;
+    private Vector2 startPosition;
+    private Vector2 endPosition;
+
     private LockstepIOComponent lockstep;
     private JSONObject j;
 
     // Use this for initialization
     void Start()
     {
-        moveSpeed = 10f;
+        moveSpeed = 20f;
+
+        lerpTime = 0;
+        lerpSpeed = 15;
+        startPosition = transform.position;
+        endPosition = transform.position;
+
         lockstep = GameObject.Find("NetworkScripts").GetComponent<LockstepIOComponent>();
         gameObject.StoreID();
     }
@@ -38,9 +49,18 @@ public class Player : MonoBehaviour
                 j.AddField("gameobject", gameObject.GetInstanceID());
                 lockstep.IssueCommand(j);
             }
-
+            else
+            {
+                //endPosition = startPosition;
+            }
         }
 
+        //increment timer once per frame and lerp
+        if (startPosition != endPosition)
+        {
+            lerpTime += deltaTime;
+            transform.position = Vector2.Lerp(startPosition, endPosition, lerpSpeed * lerpTime / 1.0f);
+        }
     }
 
     public void ExecuteCommand(JSONObject Command) {
@@ -60,7 +80,9 @@ public class Player : MonoBehaviour
                 y = (float)Command.GetField("setY").n;
             }
 
-            transform.position = new Vector2(transform.position.x + x, transform.position.y + y);
+            startPosition = transform.position;
+            endPosition = new Vector2(transform.position.x + x, transform.position.y + y);
+            lerpTime = 0;
         }
 
     }
