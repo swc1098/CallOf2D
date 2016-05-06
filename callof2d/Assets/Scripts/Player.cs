@@ -6,23 +6,16 @@ public class Player : MonoBehaviour
     public float moveSpeed;
     private float deltaTime;
 
-    private float lerpTime;
-    private float lerpSpeed;
-    private Vector2 startPosition;
-    private Vector2 endPosition;
-
     private LockstepIOComponent lockstep;
     private JSONObject j;
+
+    public Rigidbody2D body;
 
     // Use this for initialization
     void Start()
     {
-        moveSpeed = 20f;
-
-        lerpTime = 0;
-        lerpSpeed = 15;
-        startPosition = transform.position;
-        endPosition = transform.position;
+        moveSpeed = 70f;
+        body = GetComponent<Rigidbody2D>();
 
         lockstep = GameObject.Find("NetworkScripts").GetComponent<LockstepIOComponent>();
         gameObject.StoreID();
@@ -51,19 +44,20 @@ public class Player : MonoBehaviour
             }
             else
             {
-                //endPosition = startPosition;
+                // Immediately decelerate
+                body.velocity = Vector2.zero;
             }
         }
 
-        //increment timer once per frame and lerp
-        if (startPosition != endPosition)
-        {
-            lerpTime += deltaTime;
-            transform.position = Vector2.Lerp(startPosition, endPosition, lerpSpeed * lerpTime / 1.0f);
-        }
     }
 
-    public void ExecuteCommand(JSONObject Command) {
+    void FixedUpdate()
+    {
+        //
+    }
+
+    public void ExecuteCommand(JSONObject Command)
+    {
 
         if (Command.HasField("move"))
         {
@@ -80,40 +74,49 @@ public class Player : MonoBehaviour
                 y = (float)Command.GetField("setY").n;
             }
 
-            startPosition = transform.position;
-            endPosition = new Vector2(transform.position.x + x, transform.position.y + y);
-            lerpTime = 0;
+            body.drag = 10;
+            body.AddForce(new Vector2(x, y), ForceMode2D.Force);
+            //body.velocity = Vector2.ClampMagnitude(body.velocity, moveSpeed);
         }
 
     }
 
-    void HandleKeyInput() {
-        
+    void HandleKeyInput()
+    {
+
         // on up arrow 
         if (Input.GetKey(KeyCode.W))
         {
-            j.AddField("setY", moveSpeed * deltaTime);
+            j.AddField("setY", moveSpeed);
             j.AddField("move", true);
         }
         // on down arrow
         else if (Input.GetKey(KeyCode.S))
         {
-            j.AddField("setY", -moveSpeed * deltaTime);
+            j.AddField("setY", -moveSpeed);
             j.AddField("move", true);
         }
         // on left arrow
         if (Input.GetKey(KeyCode.A))
         {
-            j.AddField("setX", -moveSpeed * deltaTime);
+            j.AddField("setX", -moveSpeed);
             j.AddField("move", true);
         }
         // on right arrow
         else if (Input.GetKey(KeyCode.D))
         {
-            j.AddField("setX", moveSpeed * deltaTime);
+            j.AddField("setX", moveSpeed);
             j.AddField("move", true);
         }
 
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "")
+        {
+            //
+        }
     }
 
 }
