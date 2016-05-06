@@ -4,7 +4,6 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
     public float moveSpeed;
-    private float deltaTime;
 
     private LockstepIOComponent lockstep;
     private JSONObject j;
@@ -32,8 +31,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        deltaTime = Time.deltaTime;
-
         // Ensure lockstep is ready before issuing commands
         if (GM.lockstep.LockstepReady)
         {
