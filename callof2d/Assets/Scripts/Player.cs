@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
             }
 
             body.AddForce(new Vector2(x, y), ForceMode2D.Force);
-            //body.velocity = Vector2.ClampMagnitude(body.velocity, moveSpeed);
+            body.velocity = Vector2.ClampMagnitude(body.velocity, moveSpeed);
         }
 
     }

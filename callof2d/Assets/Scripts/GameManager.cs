@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
     public LockstepIOComponent lockstep;
     public GameObject player;
     public GameObject mainCamera;
+    public GameObject map;
 
     // Use this for initialization
     void Start () {
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour {
         lockstep.GetSocket().LocalURL = "ws://127.0.0.1:3000/socket.io/?EIO=4&transport=websocket";
 
         mainCamera = GameObject.Find("Main Camera");
+        map = GameObject.Find("Map");
     }
 	
 	// Update is called once per frame
