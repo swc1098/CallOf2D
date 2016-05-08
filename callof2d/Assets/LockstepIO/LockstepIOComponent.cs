@@ -114,7 +114,11 @@ public class LockstepIOComponent : MonoBehaviour
             GameObject obj = Extensions.idToObject[(int)Command.GetField("gameobject").n];
 
             // Call by script
-            if (obj.GetComponent<Player>())
+            if (obj.GetComponent<GameManager>())
+            {
+                obj.GetComponent<GameManager>().ExecuteCommand(Command);
+            }
+            else if (obj.GetComponent<Player>())
             {
                 obj.GetComponent<Player>().ExecuteCommand(Command);
             }
