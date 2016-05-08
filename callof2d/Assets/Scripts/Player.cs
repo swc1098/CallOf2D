@@ -4,12 +4,11 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
     public float moveSpeed;
+    public Rigidbody2D body;
+    public GameObject reticle;
 
     private LockstepIOComponent lockstep;
     private JSONObject j;
-
-    public Rigidbody2D body;
-
     private GameManager GM;
 
     // Use this for initialization

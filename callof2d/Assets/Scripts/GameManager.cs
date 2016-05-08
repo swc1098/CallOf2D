@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour {
             if (!player)
             {
                 player = (GameObject)Instantiate(Resources.Load("Player"), Vector3.zero, Quaternion.identity);
+                player.GetComponent<Player>().reticle = (GameObject)Instantiate(Resources.Load("Reticle"));
                 mainCamera.GetComponent<SmoothFollow>().target = player;
             }
         }
