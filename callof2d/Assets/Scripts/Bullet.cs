@@ -50,6 +50,7 @@ public class Bullet : MonoBehaviour {
             // Only issue commands if there are commands to issue
             if (j.Count > 0)
             {
+                //j.AddField("Bullet" + ID, true);
                 j.AddField("gameobject", ID);
                 GM.lockstep.IssueCommand(j);
             }

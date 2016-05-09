@@ -7,6 +7,12 @@ public class Player : MonoBehaviour
     public GameObject reticle;
     public int ID;
 
+    bool moveUp;
+    bool moveDown;
+    bool moveLeft;
+    bool moveRight;
+    bool shoot;
+
     private Rigidbody2D body;
     private JSONObject j;
     private GameManager GM;
@@ -37,13 +43,14 @@ public class Player : MonoBehaviour
             // Reset JSON
             j = new JSONObject();
 
-            // Handle Key Input
-            HandleKeyInput();
+            // Handle Input
+            HandleInput();
 
             // issue the command above
             // Only issue commands if there are commands to issue
             if (j.Count > 0)
             {
+                //j.AddField("Player" + ID, true);
                 j.AddField("gameobject", ID);
                 GM.lockstep.IssueCommand(j);
             }
@@ -92,37 +99,40 @@ public class Player : MonoBehaviour
 
     }
 
-    void HandleKeyInput()
+    void HandleInput()
     {
-        // Movement
+        // Input
+        moveUp = Input.GetKey(KeyCode.W);
+        moveDown = Input.GetKey(KeyCode.S);
+        moveLeft = Input.GetKey(KeyCode.A);
+        moveRight = Input.GetKey(KeyCode.D);
+        shoot = Input.GetMouseButtonDown(0);
 
-        // on up arrow 
-        if (Input.GetKey(KeyCode.W))
+        // Movement
+        if (moveUp || moveDown || moveLeft || moveRight)
         {
-            j.AddField("setY", moveSpeed);
             j.AddField("move", true);
-        }
-        // on down arrow
-        else if (Input.GetKey(KeyCode.S))
-        {
-            j.AddField("setY", -moveSpeed);
-            j.AddField("move", true);
-        }
-        // on left arrow
-        if (Input.GetKey(KeyCode.A))
-        {
-            j.AddField("setX", -moveSpeed);
-            j.AddField("move", true);
-        }
-        // on right arrow
-        else if (Input.GetKey(KeyCode.D))
-        {
-            j.AddField("setX", moveSpeed);
-            j.AddField("move", true);
+
+            if (moveUp)
+            {
+                j.AddField("setY", moveSpeed);
+            }
+            else if (moveDown)
+            {
+                j.AddField("setY", -moveSpeed);
+            }
+            if (moveLeft)
+            {
+                j.AddField("setX", -moveSpeed);
+            }
+            else if (moveRight)
+            {
+                j.AddField("setX", moveSpeed);
+            }
         }
 
         // Shooting
-        if (Input.GetMouseButtonDown(0)) { // Left Mouse Button
+        if (shoot) { // Left Mouse Button
             j.AddField("shoot", true);
         }
     }

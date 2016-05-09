@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour {
             // Only issue commands if there are commands to issue
             if (j.Count > 0)
             {
+                //j.AddField("GameManager" + ID, true);
                 j.AddField("gameobject", ID);
                 lockstep.IssueCommand(j);
             }
