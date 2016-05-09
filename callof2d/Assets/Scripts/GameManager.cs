@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     public GameObject player;
     public GameObject mainCamera;
     public GameObject map;
+    public int ID;
 
     private JSONObject j;
 
@@ -21,7 +22,8 @@ public class GameManager : MonoBehaviour {
 
         mainCamera = GameObject.Find("Main Camera");
         map = GameObject.Find("Map");
-        gameObject.StoreID();
+        ID = Extensions.GenerateID();
+        gameObject.StoreID(ID);
 
         lockstep.GetSocket().Connect();
     }
@@ -41,13 +43,14 @@ public class GameManager : MonoBehaviour {
             // Only issue commands if there are commands to issue
             if (j.Count > 0)
             {
-                j.AddField("gameobject", gameObject.GetInstanceID());
+                j.AddField("gameobject", ID);
                 lockstep.IssueCommand(j);
             }
         }
 	}
 
     public void ExecuteCommand(JSONObject Command) {
+
         if (Command.HasField("spawnplayer"))
         {
             if (!player)
@@ -57,5 +60,6 @@ public class GameManager : MonoBehaviour {
                 mainCamera.GetComponent<SmoothFollow>().target = player;
             }
         }
+
     }
 }

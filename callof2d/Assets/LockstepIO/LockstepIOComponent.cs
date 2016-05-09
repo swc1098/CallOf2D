@@ -122,6 +122,10 @@ public class LockstepIOComponent : MonoBehaviour
             {
                 obj.GetComponent<Player>().ExecuteCommand(Command);
             }
+            else if (obj.GetComponent<Bullet>())
+            {
+                obj.GetComponent<Bullet>().ExecuteCommand(Command);
+            }
         }
 
     }

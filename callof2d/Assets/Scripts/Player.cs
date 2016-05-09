@@ -4,10 +4,10 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
     public float moveSpeed;
-    public Rigidbody2D body;
     public GameObject reticle;
+    public int ID;
 
-    private LockstepIOComponent lockstep;
+    private Rigidbody2D body;
     private JSONObject j;
     private GameManager GM;
 
@@ -24,7 +24,8 @@ public class Player : MonoBehaviour
         GetComponent<BoxCollider2D>().size = new Vector2(0.14f, 0.14f);
 
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-        gameObject.StoreID();
+        ID = Extensions.GenerateID();
+        gameObject.StoreID(ID);
     }
 
     // Update is called once per frame
@@ -43,7 +44,7 @@ public class Player : MonoBehaviour
             // Only issue commands if there are commands to issue
             if (j.Count > 0)
             {
-                j.AddField("gameobject", gameObject.GetInstanceID());
+                j.AddField("gameobject", ID);
                 GM.lockstep.IssueCommand(j);
             }
             else
@@ -82,10 +83,18 @@ public class Player : MonoBehaviour
             body.velocity = Vector2.ClampMagnitude(body.velocity, moveSpeed);
         }
 
+        if (Command.HasField("shoot") && reticle)
+        {
+            GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"), transform.position, Quaternion.identity);
+            bullet.GetComponent<Bullet>().player = gameObject;
+            bullet.GetComponent<Bullet>().direction = (reticle.transform.position - transform.position).normalized;
+        }
+
     }
 
     void HandleKeyInput()
     {
+        // Movement
 
         // on up arrow 
         if (Input.GetKey(KeyCode.W))
@@ -112,6 +121,10 @@ public class Player : MonoBehaviour
             j.AddField("move", true);
         }
 
+        // Shooting
+        if (Input.GetMouseButtonDown(0)) { // Left Mouse Button
+            j.AddField("shoot", true);
+        }
     }
 
     void OnCollisionEnter(Collision col)

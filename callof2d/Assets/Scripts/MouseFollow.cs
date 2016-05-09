@@ -6,7 +6,6 @@ public class MouseFollow : MonoBehaviour {
     
     Ray ray;
     RaycastHit hit;
-    Vector2 mouse;
     
     // Use this for initialization
     void Start () {

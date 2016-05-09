@@ -14,9 +14,27 @@ public static class Extensions
 
     public static Dictionary<int, GameObject> idToObject = new Dictionary<int, GameObject>();
 
-    public static void StoreID(this GameObject obj)
+    public static int GenerateID()
     {
-        idToObject.Add(obj.GetInstanceID(), obj);
+        int ID;
+
+        // Generate Unique ID
+        do
+        {
+            ID = Random.Range(0, int.MaxValue);
+        } while (idToObject.ContainsKey(ID));
+
+        return ID;
+    }
+
+    public static void StoreID(this GameObject obj, int ID)
+    {
+        idToObject.Add(ID, obj);   
+    }
+
+    public static void RemoveID(this GameObject obj, int ID)
+    {
+        idToObject.Remove(ID);
     }
 
 }
