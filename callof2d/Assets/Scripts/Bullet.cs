@@ -22,6 +22,7 @@ public class Bullet : MonoBehaviour {
         body.drag = 10;
         body.interpolation = RigidbodyInterpolation2D.Interpolate;
         body.freezeRotation = true;
+        body.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         col = GetComponent<CircleCollider2D>();
         col.radius = 0.09f;
         col.isTrigger = true;
@@ -32,7 +33,7 @@ public class Bullet : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 
         // Ensure lockstep is ready before issuing commands
         if (GM.lockstep.LockstepReady)
@@ -50,9 +51,8 @@ public class Bullet : MonoBehaviour {
             // Only issue commands if there are commands to issue
             if (j.Count > 0)
             {
-                //j.AddField("Bullet" + ID, true);
                 j.AddField("gameobject", ID);
-                GM.lockstep.IssueCommand(j);
+                GM.lockstep.issuedCommands.Enqueue(j);
             }
 
         }
@@ -69,15 +69,15 @@ public class Bullet : MonoBehaviour {
 
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        gameObject.RemoveID(ID);
-        Destroy(gameObject);
 
-        if (col.gameObject.tag == "")
+        if (col.gameObject.tag == "Wall")
         {
-            //
+            gameObject.RemoveID(ID);
+            Destroy(gameObject);
         }
+
     }
 
 }

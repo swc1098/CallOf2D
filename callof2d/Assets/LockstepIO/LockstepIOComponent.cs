@@ -24,6 +24,9 @@ public class LockstepIOComponent : MonoBehaviour
     public long CommandDelay;
 
     public Text connectingStatus;
+    public Queue<JSONObject> issuedCommands;
+    private JSONObject issuedCommand;
+    private int executedCommandCount;
 
     public SocketIOComponent GetSocket()
     {
@@ -90,6 +93,7 @@ public class LockstepIOComponent : MonoBehaviour
         // Synchronize lockstep with the server first
         Sync();
 
+        issuedCommands = new Queue<JSONObject>();
         connectingStatus = GameObject.Find("ConnectingStatusText").GetComponent<Text>();
         connectingStatus.text = "Connecting...";
     }
@@ -97,6 +101,19 @@ public class LockstepIOComponent : MonoBehaviour
     public void Update()
     {
         // Issue command code
+        if (LockstepReady)
+        {
+            issuedCommand = new JSONObject();
+            int count = issuedCommands.Count;
+
+            for (int i = 0; i < count; i++)
+            {
+                issuedCommand.AddField(i.ToString(), issuedCommands.Dequeue());
+            }
+
+            //Debug.Log(issuedCommand);
+            IssueCommand(issuedCommand);
+        }
     }
 
     public void IssueCommand(JSONObject Command)
@@ -109,25 +126,37 @@ public class LockstepIOComponent : MonoBehaviour
 
     public void ExecuteCommand(JSONObject Command)
     {
-        if (Command.HasField("gameobject"))
+        executedCommandCount = 0;
+        JSONObject j;
+        int objID;
+        GameObject obj;
+
+        while (Command.HasField(executedCommandCount.ToString()))
         {
-            GameObject obj = Extensions.idToObject[(int)Command.GetField("gameobject").n];
+            j = Command.GetField(executedCommandCount.ToString());
+            objID = (int)j.GetField("gameobject").n;
 
-            // Call by script
-            if (obj.GetComponent<GameManager>())
-            {
-                obj.GetComponent<GameManager>().ExecuteCommand(Command);
+            if (Extensions.idToObject.ContainsKey(objID)) {
+
+                obj = Extensions.idToObject[objID];
+
+                // Call by script
+                if (obj.GetComponent<GameManager>())
+                {
+                    obj.GetComponent<GameManager>().ExecuteCommand(j);
+                }
+                else if (obj.GetComponent<Player>())
+                {
+                    obj.GetComponent<Player>().ExecuteCommand(j);
+                }
+                else if (obj.GetComponent<Bullet>())
+                {
+                    obj.GetComponent<Bullet>().ExecuteCommand(j);
+                }
             }
-            else if (obj.GetComponent<Player>())
-            {
-                obj.GetComponent<Player>().ExecuteCommand(Command);
-            }
-            else if (obj.GetComponent<Bullet>())
-            {
-                obj.GetComponent<Bullet>().ExecuteCommand(Command);
-            }
+
+            executedCommandCount++;
         }
-
     }
 
 
