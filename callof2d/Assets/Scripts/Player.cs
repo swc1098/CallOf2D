@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        moveSpeed = 70f;
+        moveSpeed = 105f;
 
         body = GetComponent<Rigidbody2D>();
         body.gravityScale = 0;
@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
         // on right arrow
         else if (Input.GetKey(KeyCode.D))
         {
-            j.AddField("setX", moveSpeed);
+            j.AddField("setX", +moveSpeed);
             j.AddField("move", true);
         }
 
