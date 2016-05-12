@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     public int ID;
 
     private JSONObject j;
+	private bool debugMode = false;
 
     // Use this for initialization
     void Start () {
@@ -26,6 +27,15 @@ public class GameManager : MonoBehaviour {
         gameObject.StoreID(ID);
 
         lockstep.GetSocket().Connect();
+
+		if (!debugMode) {
+			GameObject[] walls = GameObject.FindGameObjectsWithTag ("Wall");
+			foreach (GameObject wall in walls) {
+				Color tmp = wall.GetComponent<SpriteRenderer> ().color;
+				tmp.a = 0f;
+				wall.GetComponent<SpriteRenderer> ().color = tmp;
+			}
+		}
     }
 	
 	// Update is called once per frame
