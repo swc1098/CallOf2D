@@ -4,13 +4,18 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
     public float moveSpeed;
-    private float deltaTime;
+    public GameObject reticle;
+    public int ID;
 
-    private LockstepIOComponent lockstep;
+    bool moveUp;
+    bool moveDown;
+    bool moveLeft;
+    bool moveRight;
+    bool shoot;
+
+    private Rigidbody2D body;
+    private BoxCollider2D col;
     private JSONObject j;
-
-    public Rigidbody2D body;
-
     private GameManager GM;
 
     // Use this for initialization
@@ -23,32 +28,32 @@ public class Player : MonoBehaviour
         body.drag = 10;
         body.interpolation = RigidbodyInterpolation2D.Interpolate;
         body.freezeRotation = true;
-        GetComponent<BoxCollider2D>().size = new Vector2(0.14f, 0.14f);
+        col = GetComponent<BoxCollider2D>();
+        col.size = new Vector2(0.14f, 0.14f);
 
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-        gameObject.StoreID();
+        ID = Extensions.GenerateID();
+        gameObject.StoreID(ID);
     }
 
     // Update is called once per frame
     void Update()
     {
-        deltaTime = Time.deltaTime;
-
         // Ensure lockstep is ready before issuing commands
         if (GM.lockstep.LockstepReady)
         {
             // Reset JSON
             j = new JSONObject();
 
-            // Handle Key Input
-            HandleKeyInput();
+            // Handle Input
+            HandleInput();
 
             // issue the command above
             // Only issue commands if there are commands to issue
             if (j.Count > 0)
             {
-                j.AddField("gameobject", gameObject.GetInstanceID());
-                GM.lockstep.IssueCommand(j);
+                j.AddField("gameobject", ID);
+                GM.lockstep.issuedCommands.Enqueue(j);
             }
             else
             {
@@ -83,39 +88,54 @@ public class Player : MonoBehaviour
             }
 
             body.AddForce(new Vector2(x, y), ForceMode2D.Force);
-            //body.velocity = Vector2.ClampMagnitude(body.velocity, moveSpeed);
+            body.velocity = Vector2.ClampMagnitude(body.velocity, moveSpeed);
+        }
+
+        if (Command.HasField("shoot") && reticle)
+        {
+            GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"), transform.position, Quaternion.identity);
+            bullet.GetComponent<Bullet>().player = gameObject;
+            bullet.GetComponent<Bullet>().direction = (reticle.transform.position - transform.position).normalized;
         }
 
     }
 
-    void HandleKeyInput()
+    void HandleInput()
     {
+        // Input
+        moveUp = Input.GetKey(KeyCode.W);
+        moveDown = Input.GetKey(KeyCode.S);
+        moveLeft = Input.GetKey(KeyCode.A);
+        moveRight = Input.GetKey(KeyCode.D);
+        shoot = Input.GetMouseButtonDown(0);    // Left Mouse Button
 
-        // on up arrow 
-        if (Input.GetKey(KeyCode.W))
+        // Movement
+        if (moveUp || moveDown || moveLeft || moveRight)
         {
-            j.AddField("setY", moveSpeed);
             j.AddField("move", true);
-        }
-        // on down arrow
-        else if (Input.GetKey(KeyCode.S))
-        {
-            j.AddField("setY", -moveSpeed);
-            j.AddField("move", true);
-        }
-        // on left arrow
-        if (Input.GetKey(KeyCode.A))
-        {
-            j.AddField("setX", -moveSpeed);
-            j.AddField("move", true);
-        }
-        // on right arrow
-        else if (Input.GetKey(KeyCode.D))
-        {
-            j.AddField("setX", +moveSpeed);
-            j.AddField("move", true);
+
+            if (moveUp)
+            {
+                j.AddField("setY", moveSpeed);
+            }
+            else if (moveDown)
+            {
+                j.AddField("setY", -moveSpeed);
+            }
+            if (moveLeft)
+            {
+                j.AddField("setX", -moveSpeed);
+            }
+            else if (moveRight)
+            {
+                j.AddField("setX", moveSpeed);
+            }
         }
 
+        // Shooting
+        if (shoot) {
+            j.AddField("shoot", true);
+        }
     }
 
     void OnCollisionEnter(Collision col)
