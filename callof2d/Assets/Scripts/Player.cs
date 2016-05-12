@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        moveSpeed = 70f;
+        moveSpeed = 105f;
 
         body = GetComponent<Rigidbody2D>();
         body.gravityScale = 0;
@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
         moveDown = Input.GetKey(KeyCode.S);
         moveLeft = Input.GetKey(KeyCode.A);
         moveRight = Input.GetKey(KeyCode.D);
-        shoot = Input.GetMouseButtonDown(0);
+        shoot = Input.GetMouseButtonDown(0);    // Left Mouse Button
 
         // Movement
         if (moveUp || moveDown || moveLeft || moveRight)
@@ -131,7 +131,7 @@ public class Player : MonoBehaviour
         }
 
         // Shooting
-        if (shoot) { // Left Mouse Button
+        if (shoot) {
             j.AddField("shoot", true);
         }
     }
