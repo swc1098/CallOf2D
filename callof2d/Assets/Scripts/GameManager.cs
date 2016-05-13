@@ -2,6 +2,15 @@
 using UnityEngine.UI;
 using System.Collections;
 
+public enum GameState
+{
+    Start,
+    Game,
+    Pause,
+    Win,
+    Lose
+}
+
 public class GameManager : MonoBehaviour {
 
     public LockstepIOComponent lockstep;
@@ -12,6 +21,11 @@ public class GameManager : MonoBehaviour {
 
     private JSONObject j;
 	private bool debugMode = false;
+
+    // Keep the gamestate in a constant state of rotation. 
+    public GameState gameState;
+    private GameState currentState;
+    private GameState previousState;
 
     // Use this for initialization
     void Start () {
