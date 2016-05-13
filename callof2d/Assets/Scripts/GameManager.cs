@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     // Keep the gamestate in a constant state of rotation. 
     public GameState gameState;
-    private GameState lastState;
+    //private GameState lastState;
 
     // menus & buttons (No need to change these except...)
     private Dictionary<GameState, GameObject> menus;
@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Last gameState
-        lastState = gameState;
+        //lastState = gameState;
     }
    
     public void ExecuteCommand(JSONObject Command)
