@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        ChangeState(GameState.Game);
+        ChangeState(GameState.MainMenu);
 
     }
 
