@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public enum GameState
 {
-    Start,
+    StartMenu,
     Game,
     Pause,
     Win,
@@ -22,13 +23,45 @@ public class GameManager : MonoBehaviour {
     private JSONObject j;
 	private bool debugMode = false;
 
+    // bool to check if player can connect.
+    private bool canPlay = false;
+
     // Keep the gamestate in a constant state of rotation. 
     public GameState gameState;
     private GameState currentState;
     private GameState previousState;
 
+    // menus & buttons (No need to change these except...)
+    private Dictionary<GameState, GameObject> menus;
+    private GameObject[] startButton;
+    private GameObject[] menuButton;
+    private GameObject[] resumeButton;
+
     // Use this for initialization
     void Start () {
+        ChangeState(GameState.StartMenu);
+        // Menus Handler
+        menus = new Dictionary<GameState, GameObject>();
+        menus.Add(GameState.StartMenu, GameObject.Find("MainMenu"));
+        menus.Add(GameState.Pause, GameObject.Find("PauseMenu"));
+        menus.Add(GameState.Win, GameObject.Find("VictoryMenu")); // Placeholder
+        menus.Add(GameState.Lose, GameObject.Find("DeadMenu"));
+        foreach (GameObject m in menus.Values)
+        {
+            m.GetComponent<RectTransform>().localPosition = Vector3.zero;
+        }
+
+        // Start --> Game
+        startButton = GameObject.FindGameObjectsWithTag("StartButton");
+        foreach (GameObject button in startButton)
+        {
+            button.GetComponent<Button>().onClick.AddListener(() => { // anonymous (delegate) function!
+                ChangeState(GameState.Game);
+                canPlay = true;
+            });
+        }
+
+
         lockstep = GameObject.Find("NetworkScripts").GetComponent<LockstepIOComponent>();
         //lockstep.GetSocket().AutoConnect = false; // SET IN EDITOR
         lockstep.GetSocket().UseLocal = false;
@@ -50,11 +83,14 @@ public class GameManager : MonoBehaviour {
 				wall.GetComponent<SpriteRenderer> ().color = tmp;
 			}
 		}
+
+
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (lockstep.LockstepReady) {
+        if (lockstep.LockstepReady)
+        {
 
             // Reset JSON
             j = new JSONObject();
@@ -72,7 +108,22 @@ public class GameManager : MonoBehaviour {
             }
         }
 	}
+    /// <summary>
+    /// Change Gamestate based on current menu active
+    /// </summary>
+    /// <param name="state"></param>
+    public void ChangeState(GameState state)
+    {
+        gameState = state;
 
+        // safety. Deactivate all menus before activating the one we want
+        foreach (GameObject m in menus.Values)
+        {
+            m.SetActive(false);
+        }
+
+        menus[state].SetActive(true);
+    }
     public void ExecuteCommand(JSONObject Command) {
 
         if (Command.HasField("spawnplayer"))
