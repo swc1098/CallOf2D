@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
     // Keep the gamestate in a constant state of rotation. 
     public GameState gameState;
     private GameState currentState;
-    private GameState previousState;
 
     // menus & buttons (No need to change these except...)
     private Dictionary<GameState, GameObject> menus;
@@ -105,7 +104,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        ChangeState(GameState.MainMenu);
+        ChangeState(GameState.Game);
 
     }
 
@@ -143,7 +142,6 @@ public class GameManager : MonoBehaviour
                 ChangeState(GameState.Game);
             }
         }
-        previousState = currentState;
     }
     /// <summary>
     /// Change Gamestate based on current menu active
