@@ -13,13 +13,13 @@ public class SmoothFollow : MonoBehaviour
     public Vector3 offset;
     Vector3 targetPos;
 
-    private GameManager GM;
+    //private GameManager GM;
     private Rect cameraBounds;
 
     // Use this for initialization
     void Start()
     {
-        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        //GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         targetPos = transform.position;
 
         SetBounds();
