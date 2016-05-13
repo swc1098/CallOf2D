@@ -50,8 +50,6 @@ public class GameManager : MonoBehaviour
             m.GetComponent<RectTransform>().localPosition = Vector3.zero;
         }
 
-        ChangeState(GameState.MainMenu);
-
         // Start --> Game
         startButton = GameObject.FindGameObjectsWithTag("StartButton");
         foreach (GameObject button in startButton) {
@@ -59,6 +57,24 @@ public class GameManager : MonoBehaviour
             button.GetComponent<Button>().onClick.AddListener(() => { // anonymous (delegate) function!
                 ChangeState(GameState.Game);
                 //GameObject.Find("MainMenu").SetActive(false);
+            });
+        }
+
+        // ___ --> Start
+        menuButton = GameObject.FindGameObjectsWithTag("MenuButton");
+        foreach (GameObject button in menuButton)
+        {
+            button.GetComponent<Button>().onClick.AddListener(() => { // anonymous (delegate) function!
+                ChangeState(GameState.MainMenu);
+            });
+        }
+
+        // Pause --> Game
+        resumeButton = GameObject.FindGameObjectsWithTag("ResumeButton");
+        foreach (GameObject button in resumeButton)
+        {
+            button.GetComponent<Button>().onClick.AddListener(() => { // anonymous (delegate) function!
+                ChangeState(GameState.Game);
             });
         }
 
@@ -88,6 +104,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
+
+        ChangeState(GameState.MainMenu);
 
     }
 
@@ -119,6 +137,10 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.P))
             {
                 ChangeState(GameState.Pause);
+            }
+            else if (gameState == GameState.Pause)
+            {
+                ChangeState(GameState.Game);
             }
         }
         previousState = currentState;
