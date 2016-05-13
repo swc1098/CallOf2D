@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public enum GameState
 {
-    StartMenu,
+    MainMenu,
     Game,
     Pause,
     Win,
@@ -24,9 +24,6 @@ public class GameManager : MonoBehaviour
     private JSONObject j;
     private bool debugMode = false;
 
-    // bool to check if player can connect.
-    private bool canPlay = false;
-
     // Keep the gamestate in a constant state of rotation. 
     public GameState gameState;
     private GameState currentState;
@@ -43,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         // Menus Handler
         menus = new Dictionary<GameState, GameObject>();
-        menus.Add(GameState.StartMenu, GameObject.Find("MainMenu"));
+        menus.Add(GameState.MainMenu, GameObject.Find("MainMenu"));
         menus.Add(GameState.Pause, GameObject.Find("PauseMenu"));
         menus.Add(GameState.Win, GameObject.Find("VictoryMenu")); // Placeholder
         menus.Add(GameState.Lose, GameObject.Find("DeadMenu"));
@@ -53,18 +50,15 @@ public class GameManager : MonoBehaviour
             m.GetComponent<RectTransform>().localPosition = Vector3.zero;
         }
 
-        gameState = GameState.StartMenu;
+        ChangeState(GameState.MainMenu);
 
         // Start --> Game
         startButton = GameObject.FindGameObjectsWithTag("StartButton");
-        foreach (GameObject button in startButton)
-        {
-            button.GetComponent<Button>().onClick.AddListener(() =>
-            { // anonymous (delegate) function!
+        foreach (GameObject button in startButton) {
+            // Debug.Log(button);
+            button.GetComponent<Button>().onClick.AddListener(() => { // anonymous (delegate) function!
                 ChangeState(GameState.Game);
-                canPlay = true;
-                GameObject.Find("MainMenu").SetActive(false);
-                Debug.Log("Click!");
+                //GameObject.Find("MainMenu").SetActive(false);
             });
         }
 
@@ -81,7 +75,6 @@ public class GameManager : MonoBehaviour
         gameObject.StoreID(ID);
 
         lockstep.GetSocket().Connect();
-
 
 
         if (!debugMode)
@@ -101,7 +94,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log(gameState);
         currentState = gameState;
 
         if (lockstep.LockstepReady && currentState == GameState.Game)
@@ -122,15 +115,8 @@ public class GameManager : MonoBehaviour
                 j.AddField("gameobject", ID);
                 lockstep.issuedCommands.Enqueue(j);
             }
-        }
-        if (gameState == GameState.StartMenu)
-        {
-            ChangeState(GameState.StartMenu);
-        }
-        // Check for pause state
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (gameState == GameState.Game)
+            // Check for pause state
+            if (Input.GetKeyDown(KeyCode.P))
             {
                 ChangeState(GameState.Pause);
             }
