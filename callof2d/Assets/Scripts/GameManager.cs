@@ -12,7 +12,8 @@ public enum GameState
     Lose
 }
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     public LockstepIOComponent lockstep;
     public GameObject player;
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour {
     public int ID;
 
     private JSONObject j;
-	private bool debugMode = false;
+    private bool debugMode = false;
 
     // bool to check if player can connect.
     private bool canPlay = false;
@@ -38,31 +39,37 @@ public class GameManager : MonoBehaviour {
     private GameObject[] resumeButton;
 
     // Use this for initialization
-    void Start () {
-        ChangeState(GameState.StartMenu);
+    void Start()
+    {
         // Menus Handler
         menus = new Dictionary<GameState, GameObject>();
         menus.Add(GameState.StartMenu, GameObject.Find("MainMenu"));
         menus.Add(GameState.Pause, GameObject.Find("PauseMenu"));
         menus.Add(GameState.Win, GameObject.Find("VictoryMenu")); // Placeholder
         menus.Add(GameState.Lose, GameObject.Find("DeadMenu"));
+
         foreach (GameObject m in menus.Values)
         {
             m.GetComponent<RectTransform>().localPosition = Vector3.zero;
         }
 
+        gameState = GameState.StartMenu;
+
         // Start --> Game
         startButton = GameObject.FindGameObjectsWithTag("StartButton");
         foreach (GameObject button in startButton)
         {
-            button.GetComponent<Button>().onClick.AddListener(() => { // anonymous (delegate) function!
+            button.GetComponent<Button>().onClick.AddListener(() =>
+            { // anonymous (delegate) function!
                 ChangeState(GameState.Game);
                 canPlay = true;
+                GameObject.Find("MainMenu").SetActive(false);
+                Debug.Log("Click!");
             });
         }
 
-
         lockstep = GameObject.Find("NetworkScripts").GetComponent<LockstepIOComponent>();
+
         //lockstep.GetSocket().AutoConnect = false; // SET IN EDITOR
         lockstep.GetSocket().UseLocal = false;
         lockstep.GetSocket().CloudURL = "ws://zlb3507-lockstep-io-server.herokuapp.com/socket.io/?EIO=4&transport=websocket";
@@ -75,27 +82,36 @@ public class GameManager : MonoBehaviour {
 
         lockstep.GetSocket().Connect();
 
-		if (!debugMode) {
-			GameObject[] walls = GameObject.FindGameObjectsWithTag ("Wall");
-			foreach (GameObject wall in walls) {
-				Color tmp = wall.GetComponent<SpriteRenderer> ().color;
-				tmp.a = 0f;
-				wall.GetComponent<SpriteRenderer> ().color = tmp;
-			}
-		}
+
+
+        if (!debugMode)
+        {
+            GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
+            foreach (GameObject wall in walls)
+            {
+                Color tmp = wall.GetComponent<SpriteRenderer>().color;
+                tmp.a = 0f;
+                wall.GetComponent<SpriteRenderer>().color = tmp;
+            }
+        }
 
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if (lockstep.LockstepReady)
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        currentState = gameState;
+
+        if (lockstep.LockstepReady && currentState == GameState.Game)
         {
 
             // Reset JSON
             j = new JSONObject();
 
-            if (!player) {
+            if (!player)
+            {
                 j.AddField("spawnplayer", true);
             }
 
@@ -107,7 +123,20 @@ public class GameManager : MonoBehaviour {
                 lockstep.issuedCommands.Enqueue(j);
             }
         }
-	}
+        if (gameState == GameState.StartMenu)
+        {
+            ChangeState(GameState.StartMenu);
+        }
+        // Check for pause state
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (gameState == GameState.Game)
+            {
+                ChangeState(GameState.Pause);
+            }
+        }
+        previousState = currentState;
+    }
     /// <summary>
     /// Change Gamestate based on current menu active
     /// </summary>
@@ -124,7 +153,8 @@ public class GameManager : MonoBehaviour {
 
         menus[state].SetActive(true);
     }
-    public void ExecuteCommand(JSONObject Command) {
+    public void ExecuteCommand(JSONObject Command)
+    {
 
         if (Command.HasField("spawnplayer"))
         {
