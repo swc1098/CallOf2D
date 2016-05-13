@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         // Ensure lockstep is ready before issuing commands
-        if (GM.lockstep.LockstepReady)
+        if (GM.lockstep.LockstepReady && GM.gameState == GameState.Game)
         {
             // Reset JSON
             j = new JSONObject();

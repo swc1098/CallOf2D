@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     // Keep the gamestate in a constant state of rotation. 
     public GameState gameState;
-    private GameState currentState;
+    private GameState lastState;
 
     // menus & buttons (No need to change these except...)
     private Dictionary<GameState, GameObject> menus;
@@ -38,33 +38,28 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // Menus Handler
+
         menus = new Dictionary<GameState, GameObject>();
         menus.Add(GameState.MainMenu, GameObject.Find("MainMenu"));
         menus.Add(GameState.Pause, GameObject.Find("PauseMenu"));
-        menus.Add(GameState.Win, GameObject.Find("VictoryMenu")); // Placeholder
+        menus.Add(GameState.Win, GameObject.Find("VictoryMenu"));
         menus.Add(GameState.Lose, GameObject.Find("DeadMenu"));
-
         foreach (GameObject m in menus.Values)
         {
             m.GetComponent<RectTransform>().localPosition = Vector3.zero;
         }
 
+        // Buttons
+
         // Start --> Game
         startButton = GameObject.FindGameObjectsWithTag("StartButton");
-        foreach (GameObject button in startButton) {
-            // Debug.Log(button);
-            button.GetComponent<Button>().onClick.AddListener(() => { // anonymous (delegate) function!
-                ChangeState(GameState.Game);
-                //GameObject.Find("MainMenu").SetActive(false);
-            });
-        }
-
-        // ___ --> Start
-        menuButton = GameObject.FindGameObjectsWithTag("MenuButton");
-        foreach (GameObject button in menuButton)
+        foreach (GameObject button in startButton)
         {
             button.GetComponent<Button>().onClick.AddListener(() => { // anonymous (delegate) function!
-                ChangeState(GameState.MainMenu);
+                ChangeState(GameState.Game);
+                
+                // New Game
+                Connect();
             });
         }
 
@@ -77,20 +72,32 @@ public class GameManager : MonoBehaviour
             });
         }
 
-        lockstep = GameObject.Find("NetworkScripts").GetComponent<LockstepIOComponent>();
+        // ___ --> Start
+        menuButton = GameObject.FindGameObjectsWithTag("MenuButton");
+        foreach (GameObject button in menuButton)
+        {
+            button.GetComponent<Button>().onClick.AddListener(() => { // anonymous (delegate) function!
+                ChangeState(GameState.MainMenu);
+                //Disconnect();
+            });
+        }
 
+        // Networking
+
+        lockstep = GameObject.Find("NetworkScripts").GetComponent<LockstepIOComponent>();
         //lockstep.GetSocket().AutoConnect = false; // SET IN EDITOR
         lockstep.GetSocket().UseLocal = false;
         lockstep.GetSocket().CloudURL = "ws://zlb3507-lockstep-io-server.herokuapp.com/socket.io/?EIO=4&transport=websocket";
         lockstep.GetSocket().LocalURL = "ws://127.0.0.1:3000/socket.io/?EIO=4&transport=websocket";
+
+        // World Setup
 
         mainCamera = GameObject.Find("Main Camera");
         map = GameObject.Find("Map");
         ID = Extensions.GenerateID();
         gameObject.StoreID(ID);
 
-        lockstep.GetSocket().Connect();
-
+        // Hide wall colliders
 
         if (!debugMode)
         {
@@ -104,17 +111,33 @@ public class GameManager : MonoBehaviour
         }
 
 
+        // Start game
         ChangeState(GameState.MainMenu);
 
+    }
+
+    void Connect() {
+        lockstep.GetSocket().Connect();
+    }
+
+    void Disconnect() {
+        lockstep.GetSocket().Close();
+        player.RemoveID(ID);
+        Destroy(player);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(gameState);
-        currentState = gameState;
+        // Check for pause state
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (gameState == GameState.Game) ChangeState(GameState.Pause);
+            else if (gameState == GameState.Pause) ChangeState(GameState.Game);
+        }
 
-        if (lockstep.LockstepReady && currentState == GameState.Game)
+        // Queue commands
+        if (lockstep.LockstepReady && gameState == GameState.Game)
         {
 
             // Reset JSON
@@ -132,33 +155,13 @@ public class GameManager : MonoBehaviour
                 j.AddField("gameobject", ID);
                 lockstep.issuedCommands.Enqueue(j);
             }
-            // Check for pause state
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                ChangeState(GameState.Pause);
-            }
-            else if (gameState == GameState.Pause)
-            {
-                ChangeState(GameState.Game);
-            }
-        }
-    }
-    /// <summary>
-    /// Change Gamestate based on current menu active
-    /// </summary>
-    /// <param name="state"></param>
-    public void ChangeState(GameState state)
-    {
-        gameState = state;
 
-        // safety. Deactivate all menus before activating the one we want
-        foreach (GameObject m in menus.Values)
-        {
-            m.SetActive(false);
         }
 
-        menus[state].SetActive(true);
+        // Last gameState
+        lastState = gameState;
     }
+   
     public void ExecuteCommand(JSONObject Command)
     {
 
@@ -173,4 +176,25 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+    /// <summary>
+    /// Change Gamestate based on current menu active
+    /// </summary>
+    /// <param name="state"></param>
+    public void ChangeState(GameState state)
+    {
+        gameState = state;
+
+        // safety. Deactivate all menus before activating the one we want
+        foreach (GameObject m in menus.Values)
+        {
+            m.SetActive(false);
+        }
+
+        if (menus.ContainsKey(state))
+        {
+            menus[state].SetActive(true);
+        }
+    }
+
 }
