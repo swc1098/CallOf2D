@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     public float moveSpeed;
     public GameObject reticle;
     public int ID;
+    public string SocketID;
 
     bool moveUp;
     bool moveDown;
@@ -32,7 +33,10 @@ public class Player : MonoBehaviour
         col.size = new Vector2(0.14f, 0.14f);
 
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-        ID = Extensions.GenerateID();
+    }
+
+    public void AssignID(int objID) {
+        ID = objID;
         gameObject.StoreID(ID);
     }
 
@@ -40,7 +44,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         // Ensure lockstep is ready before issuing commands
-        if (GM.lockstep.LockstepReady && GM.gameState == GameState.Game)
+        if (GM.lockstep.CommandReady && GM.gameState == GameState.Game && SocketID == GM.SocketID)
         {
             // Reset JSON
             j = new JSONObject();
@@ -91,11 +95,14 @@ public class Player : MonoBehaviour
             body.velocity = Vector2.ClampMagnitude(body.velocity, moveSpeed);
         }
 
-        if (Command.HasField("shoot") && reticle)
+        if (Command.HasField("spawnbullet"))
         {
             GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"), transform.position, Quaternion.identity);
+            bullet.GetComponent<Bullet>().AssignID((int)Command.GetField("spawnbullet").n);
+            bullet.GetComponent<Bullet>().SocketID = SocketID;
+
             bullet.GetComponent<Bullet>().player = gameObject;
-            bullet.GetComponent<Bullet>().direction = (reticle.transform.position - transform.position).normalized;
+            bullet.GetComponent<Bullet>().direction = new Vector2((float)Command.GetField("dirX").n, (float)Command.GetField("dirY").n);
         }
 
     }
@@ -134,7 +141,11 @@ public class Player : MonoBehaviour
 
         // Shooting
         if (shoot) {
-            j.AddField("shoot", true);
+            j.AddField("spawnbullet", Extensions.GenerateID());
+
+            Vector2 direction = (reticle.transform.position - transform.position).normalized;
+            j.AddField("dirX", direction.x);
+            j.AddField("dirY", direction.y);
         }
     }
 

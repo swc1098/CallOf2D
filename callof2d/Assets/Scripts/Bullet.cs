@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour {
     public Vector2 direction;
     public float moveSpeed;
     public int ID;
+    public string SocketID;
 
     private Rigidbody2D body;
     private CircleCollider2D col;
@@ -28,15 +29,19 @@ public class Bullet : MonoBehaviour {
         col.isTrigger = true;
 
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-        ID = Extensions.GenerateID();
+    }
+
+    public void AssignID(int objID)
+    {
+        ID = objID;
         gameObject.StoreID(ID);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 
         // Ensure lockstep is ready before issuing commands
-        if (GM.lockstep.LockstepReady)
+        if (GM.lockstep.CommandReady && SocketID == GM.SocketID)
         {
             // Reset JSON
             j = new JSONObject();

@@ -23,6 +23,10 @@ public class LockstepIOComponent : MonoBehaviour
     public bool LockstepReady;
     public long CommandDelay;
 
+    private float elapsedTime;
+    private float commandWait;
+    public bool CommandReady;
+
     public Text connectingStatus;
     public Queue<JSONObject> issuedCommands;
     private JSONObject issuedCommand;
@@ -93,6 +97,9 @@ public class LockstepIOComponent : MonoBehaviour
         // Synchronize lockstep with the server first
         Sync();
 
+        elapsedTime = 0;
+        commandWait = SyncRateSec;
+
         issuedCommands = new Queue<JSONObject>();
         connectingStatus = GameObject.Find("ConnectingStatusText").GetComponent<Text>();
         connectingStatus.text = "Connecting...";
@@ -100,9 +107,18 @@ public class LockstepIOComponent : MonoBehaviour
 
     public void Update()
     {
-        // Issue command code
-        if (LockstepReady)
+        // Delay past first sync
+        if (!CommandReady && LockstepReady && elapsedTime < commandWait)
         {
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime >= commandWait)
+            {
+                CommandReady = true;
+            }
+        }
+
+        // Issue command code
+        else if (CommandReady) {
             issuedCommand = new JSONObject();
             int count = issuedCommands.Count;
 
@@ -136,7 +152,8 @@ public class LockstepIOComponent : MonoBehaviour
             j = Command.GetField(executedCommandCount.ToString());
             objID = (int)j.GetField("gameobject").n;
 
-            if (Extensions.idToObject.ContainsKey(objID)) {
+            if (Extensions.idToObject.ContainsKey(objID))
+            {
 
                 obj = Extensions.idToObject[objID];
 

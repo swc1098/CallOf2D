@@ -21,7 +21,7 @@ public static class Extensions
         // Generate Unique ID
         do
         {
-            ID = Random.Range(0, int.MaxValue);
+            ID = Random.Range(1, int.MaxValue);
         } while (idToObject.ContainsKey(ID));
 
         return ID;

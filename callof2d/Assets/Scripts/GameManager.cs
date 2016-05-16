@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public GameObject mainCamera;
     public GameObject map;
     public int ID;
+    public string SocketID;
 
     private JSONObject j;
     private bool debugMode = false;
@@ -55,9 +56,10 @@ public class GameManager : MonoBehaviour
         startButton = GameObject.FindGameObjectsWithTag("StartButton");
         foreach (GameObject button in startButton)
         {
-            button.GetComponent<Button>().onClick.AddListener(() => { // anonymous (delegate) function!
+            button.GetComponent<Button>().onClick.AddListener(() =>
+            { // anonymous (delegate) function!
                 ChangeState(GameState.Game);
-                
+
                 // New Game
                 Connect();
             });
@@ -67,7 +69,8 @@ public class GameManager : MonoBehaviour
         resumeButton = GameObject.FindGameObjectsWithTag("ResumeButton");
         foreach (GameObject button in resumeButton)
         {
-            button.GetComponent<Button>().onClick.AddListener(() => { // anonymous (delegate) function!
+            button.GetComponent<Button>().onClick.AddListener(() =>
+            { // anonymous (delegate) function!
                 ChangeState(GameState.Game);
             });
         }
@@ -76,7 +79,8 @@ public class GameManager : MonoBehaviour
         menuButton = GameObject.FindGameObjectsWithTag("MenuButton");
         foreach (GameObject button in menuButton)
         {
-            button.GetComponent<Button>().onClick.AddListener(() => { // anonymous (delegate) function!
+            button.GetComponent<Button>().onClick.AddListener(() =>
+            { // anonymous (delegate) function!
                 ChangeState(GameState.MainMenu);
                 //Disconnect();
             });
@@ -89,13 +93,14 @@ public class GameManager : MonoBehaviour
         lockstep.GetSocket().UseLocal = false;
         lockstep.GetSocket().CloudURL = "ws://zlb3507-lockstep-io-server.herokuapp.com/socket.io/?EIO=4&transport=websocket";
         lockstep.GetSocket().LocalURL = "ws://127.0.0.1:3000/socket.io/?EIO=4&transport=websocket";
+        SocketID = "";
+        ID = 0;
+        gameObject.StoreID(ID);
 
         // World Setup
 
         mainCamera = GameObject.Find("Main Camera");
         map = GameObject.Find("Map");
-        ID = Extensions.GenerateID();
-        gameObject.StoreID(ID);
 
         // Hide wall colliders
 
@@ -116,11 +121,13 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void Connect() {
+    void Connect()
+    {
         lockstep.GetSocket().Connect();
     }
 
-    void Disconnect() {
+    void Disconnect()
+    {
         lockstep.GetSocket().Close();
         player.RemoveID(ID);
         Destroy(player);
@@ -137,15 +144,16 @@ public class GameManager : MonoBehaviour
         }
 
         // Queue commands
-        if (lockstep.LockstepReady && gameState == GameState.Game)
+        if (lockstep.CommandReady && gameState == GameState.Game)
         {
-
             // Reset JSON
             j = new JSONObject();
 
-            if (!player)
+            // Add new player
+            if (SocketID == "")
             {
-                j.AddField("spawnplayer", true);
+                SocketID = lockstep.GetSocket().SocketID;
+                j.AddField("spawnplayer", Extensions.GenerateID());
             }
 
             // issue the command above
@@ -153,25 +161,29 @@ public class GameManager : MonoBehaviour
             if (j.Count > 0)
             {
                 j.AddField("gameobject", ID);
+                j.AddField("player", SocketID);
                 lockstep.issuedCommands.Enqueue(j);
             }
-
         }
 
         // Last gameState
         //lastState = gameState;
     }
-   
+
     public void ExecuteCommand(JSONObject Command)
     {
 
         if (Command.HasField("spawnplayer"))
         {
-            if (!player)
+            GameObject player = (GameObject)Instantiate(Resources.Load("Player"), Vector3.zero, Quaternion.identity);
+            player.GetComponent<Player>().AssignID((int)Command.GetField("spawnplayer").n);
+            player.GetComponent<Player>().SocketID = Command.GetField("player").str;
+
+            if (player.GetComponent<Player>().SocketID == SocketID)
             {
-                player = (GameObject)Instantiate(Resources.Load("Player"), Vector3.zero, Quaternion.identity);
-                player.GetComponent<Player>().reticle = (GameObject)Instantiate(Resources.Load("Reticle"));
                 mainCamera.GetComponent<SmoothFollow>().target = player;
+                player.GetComponent<Player>().reticle = (GameObject)Instantiate(Resources.Load("Reticle"));
+                this.player = player;
             }
         }
 
