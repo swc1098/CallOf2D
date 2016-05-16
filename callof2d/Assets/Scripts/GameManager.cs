@@ -175,15 +175,15 @@ public class GameManager : MonoBehaviour
 
         if (Command.HasField("spawnplayer"))
         {
-            GameObject player = (GameObject)Instantiate(Resources.Load("Player"), Vector3.zero, Quaternion.identity);
-            player.GetComponent<Player>().AssignID((int)Command.GetField("spawnplayer").n);
-            player.GetComponent<Player>().SocketID = Command.GetField("player").str;
+            GameObject p = (GameObject)Instantiate(Resources.Load("Player"), Vector3.zero, Quaternion.identity);
+            p.GetComponent<Player>().AssignID((int)Command.GetField("spawnplayer").n);
+            p.GetComponent<Player>().SocketID = Command.GetField("player").str;
 
-            if (player.GetComponent<Player>().SocketID == SocketID)
+            if (p.GetComponent<Player>().SocketID == SocketID)
             {
+                player = p;
                 mainCamera.GetComponent<SmoothFollow>().target = player;
                 player.GetComponent<Player>().reticle = (GameObject)Instantiate(Resources.Load("Reticle"));
-                this.player = player;
             }
         }
 

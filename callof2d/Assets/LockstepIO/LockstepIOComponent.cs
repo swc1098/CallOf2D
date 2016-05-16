@@ -154,7 +154,7 @@ public class LockstepIOComponent : MonoBehaviour
 
             if (Extensions.idToObject.ContainsKey(objID))
             {
-
+                // Get GameObject
                 obj = Extensions.idToObject[objID];
 
                 // Call by script
