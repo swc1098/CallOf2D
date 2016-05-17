@@ -83,6 +83,17 @@ public class Bullet : MonoBehaviour {
             Destroy(gameObject);
         }
 
+        if (col.gameObject.tag == "Player")
+        {
+            if(col.gameObject != player)
+            {
+                // reduce health and have the fill amount show it.
+                player.gameObject.GetComponent<Player>().health--;
+                player.gameObject.GetComponent<Player>().newImage.fillAmount -= 0.15f;
+                Destroy(gameObject);
+            }
+        }
+
     }
 
 }

@@ -1,12 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public Slider healthSlide;
+
     public float moveSpeed;
     public GameObject reticle;
     public string ID;
     public string SocketID;
+
+    // Health, keeps track of player life. (5 default) 
+    private int maxHealth = 7;
+    public int health;
 
     bool moveUp;
     bool moveDown;
@@ -19,10 +26,15 @@ public class Player : MonoBehaviour
     private JSONObject j;
     private GameManager GM;
 
+    public GameObject healthImage;
+    public Image newImage;
+
+    public GameObject bullet;
+
     // Use this for initialization
     void Start()
     {
-        moveSpeed = 105f;
+        moveSpeed = 80f;
 
         body = GetComponent<Rigidbody2D>();
         body.gravityScale = 0;
@@ -31,6 +43,21 @@ public class Player : MonoBehaviour
         body.freezeRotation = true;
         col = GetComponent<BoxCollider2D>();
         col.size = new Vector2(0.14f, 0.14f);
+
+        health = maxHealth;
+
+        // create a new image and spawn it inside GUICanvas
+        // set it up so it tracks health.
+        healthImage = new GameObject();
+        newImage = healthImage.AddComponent<Image>();
+        newImage.sprite = Resources.Load("Health", typeof(Sprite)) as Sprite;
+        newImage.material = Resources.Load("Green", typeof(Material)) as Material;
+        newImage.name = "HealthBar";
+        newImage.rectTransform.sizeDelta = new Vector2(3.0f, 0.5f);
+        newImage.type = Image.Type.Filled;
+        newImage.fillMethod = Image.FillMethod.Horizontal;
+        healthImage.transform.parent = GameObject.Find("GUICanvas").transform;
+
 
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
@@ -43,6 +70,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // constantly update position
+        healthImage.transform.position = gameObject.transform.position + new Vector3(0, 1.0f, 0);
+
         // Ensure lockstep is ready before issuing commands
         if (GM.lockstep.CommandReady && GM.gameState == GameState.Game && SocketID == GM.SocketID)
         {
@@ -66,6 +96,23 @@ public class Player : MonoBehaviour
             }
         }
 
+        // check for player death and destroy appropriate objects
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+            Destroy(healthImage);
+            GM.ChangeState(GameState.Lose);
+        }
+
+        // check if health is less than and change color accordingly
+        if (health <= 5)
+        {
+            newImage.material = Resources.Load("Yellow", typeof(Material)) as Material;
+        }
+        if (health <= 2)
+        {
+            newImage.material = Resources.Load("Red", typeof(Material)) as Material;
+        }
     }
 
     void FixedUpdate()
