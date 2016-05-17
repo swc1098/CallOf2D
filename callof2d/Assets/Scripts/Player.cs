@@ -83,6 +83,16 @@ public class Player : MonoBehaviour
             // Handle Input
             HandleInput();
 
+            // Handle respawn
+            if (health <= 0)
+            {
+                GM.ChangeState(GameState.Lose);
+                Vector2 respawnPos = GM.FindRandomSpawnLocation();
+                j.AddField("setPos", true);
+                j.AddField("setX", respawnPos.x);
+                j.AddField("setY", respawnPos.y);
+            }
+
             // Create and send basic JSON
             j.AddField("gameobject", ID);
             j.AddField("player", SocketID);
@@ -94,27 +104,9 @@ public class Player : MonoBehaviour
 
         }
 
-        // check for player death and destroy appropriate objects
-        newImage.fillAmount = (float)health / maxHealth;
+        // Handle health bar
+        HandleHealth();
 
-        if (health <= 0)
-        {
-            //Destroy(gameObject);
-            //Destroy(healthImage);
-            GM.ChangeState(GameState.Lose);
-            health = maxHealth;
-        }
-
-        // check if health is less than and change color accordingly
-        else if (health <= 2)
-        {
-            newImage.material = Resources.Load("Red", typeof(Material)) as Material;
-        }
-        else if (health <= 5)
-        {
-            newImage.material = Resources.Load("Yellow", typeof(Material)) as Material;
-        }
-    
     }
 
     void FixedUpdate()
@@ -126,22 +118,27 @@ public class Player : MonoBehaviour
     {
         lastPos = new Vector2((float)Command.GetField("posX").n, (float)Command.GetField("posY").n);
 
+        if (Command.HasField("setPos"))
+        {
+            transform.position = new Vector2((float)Command.GetField("setX").n, (float)Command.GetField("setY").n);
+        }
+
         if (Command.HasField("move"))
         {
             float x = 0;
             float y = 0;
 
             // Parse Movement
-            if (Command.HasField("setX"))
+            if (Command.HasField("moveX"))
             {
-                x = (float)Command.GetField("setX").n;
+                x = (float)Command.GetField("moveX").n;
             }
-            if (Command.HasField("setY"))
+            if (Command.HasField("moveY"))
             {
-                y = (float)Command.GetField("setY").n;
+                y = (float)Command.GetField("moveY").n;
             }
 
-            body.AddForce(2 * (lastPos - (Vector2)transform.position), ForceMode2D.Force); // Smoothly move towards correct position
+            body.AddForce((lastPos - (Vector2)transform.position), ForceMode2D.Force); // Smoothly move towards correct position
             body.AddForce(new Vector2(x, y), ForceMode2D.Force);
             body.velocity = Vector2.ClampMagnitude(body.velocity, moveSpeed);
         }
@@ -179,19 +176,19 @@ public class Player : MonoBehaviour
 
             if (moveUp)
             {
-                j.AddField("setY", moveSpeed);
+                j.AddField("moveY", moveSpeed);
             }
             else if (moveDown)
             {
-                j.AddField("setY", -moveSpeed);
+                j.AddField("moveY", -moveSpeed);
             }
             if (moveLeft)
             {
-                j.AddField("setX", -moveSpeed);
+                j.AddField("moveX", -moveSpeed);
             }
             else if (moveRight)
             {
-                j.AddField("setX", moveSpeed);
+                j.AddField("moveX", moveSpeed);
             }
         }
 
@@ -203,6 +200,30 @@ public class Player : MonoBehaviour
             Vector2 direction = (reticle.transform.position - transform.position).normalized;
             j.AddField("dirX", direction.x);
             j.AddField("dirY", direction.y);
+        }
+    }
+
+    void HandleHealth()
+    {
+        // check for player death and destroy appropriate objects
+        newImage.fillAmount = (float)health / maxHealth;
+
+        if (health <= 0)
+        {
+            //Destroy(gameObject);
+            //Destroy(healthImage);
+            health = maxHealth;
+            newImage.material = Resources.Load("Green", typeof(Material)) as Material;
+        }
+
+        // check if health is less than and change color accordingly
+        else if (health <= 2)
+        {
+            newImage.material = Resources.Load("Red", typeof(Material)) as Material;
+        }
+        else if (health <= 5)
+        {
+            newImage.material = Resources.Load("Yellow", typeof(Material)) as Material;
         }
     }
 

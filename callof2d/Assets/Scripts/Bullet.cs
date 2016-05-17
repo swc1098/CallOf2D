@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour
     private CircleCollider2D col;
     private GameManager GM;
     private JSONObject j;
+    private bool destroy;
 
     // Use this for initialization
     void Start()
@@ -44,7 +45,6 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         // Ensure lockstep is ready before issuing commands
         if (GM.lockstep.CommandReady && SocketID == GM.SocketID)
         {
@@ -73,7 +73,11 @@ public class Bullet : MonoBehaviour
             j.AddField("dirX", direction.x);
             j.AddField("dirY", direction.y);
             GM.lockstep.issuedCommands.Enqueue(j);
+        }
 
+        if (destroy)
+        {
+            ThisDestroy();
         }
 
     }
@@ -89,6 +93,17 @@ public class Bullet : MonoBehaviour
             body.velocity = Vector2.ClampMagnitude(body.velocity, moveSpeed);
         }
 
+        // Failsafe against missync
+        if (Command.HasField("destroy"))
+        {
+            ThisDestroy();
+        }
+
+    }
+
+    void ThisDestroy() {
+        gameObject.RemoveID(ID);
+        Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -96,8 +111,15 @@ public class Bullet : MonoBehaviour
 
         if (col.gameObject.tag == "Wall")
         {
-            gameObject.RemoveID(ID);
-            Destroy(gameObject);
+            if (SocketID == GM.SocketID)
+            {
+                j.AddField("destroy", true);
+                destroy = true;
+            }
+            else
+            {
+                ThisDestroy();
+            }
         }
 
         if (col.gameObject.tag == "Player")
@@ -105,7 +127,15 @@ public class Bullet : MonoBehaviour
             if (col.gameObject != player)
             {
                 col.gameObject.GetComponent<Player>().TakeDamage();
-                Destroy(gameObject);
+                if (SocketID == GM.SocketID)
+                {
+                    j.AddField("destroy", true);
+                    destroy = true;
+                }
+                else
+                {
+                    ThisDestroy();
+                }
             }
         }
 

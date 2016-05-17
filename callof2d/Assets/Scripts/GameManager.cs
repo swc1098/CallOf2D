@@ -218,11 +218,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public Vector3 FindSpawnLocation() {
-        foreach (GameObject s in spawnLocations) {
-            if (s.GetComponent<SpawnPoint>().free) {
+    public Vector3 FindSpawnLocation()
+    {
+        foreach (GameObject s in spawnLocations)
+        {
+            if (s.GetComponent<SpawnPoint>().free)
+            {
                 return s.transform.position;
             }
+        }
+        return Vector3.zero;
+    }
+
+    public Vector3 FindRandomSpawnLocation()
+    {
+        List<Vector3> emptyPos = new List<Vector3>();
+        foreach (GameObject s in spawnLocations)
+        {
+            if (s.GetComponent<SpawnPoint>().free)
+            {
+                emptyPos.Add(s.transform.position);
+            }
+        }
+
+        if (emptyPos.Count > 0) {
+            return emptyPos[Random.Range(0, emptyPos.Count)];
         }
         return Vector3.zero;
     }
