@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
     public int ID;
 
     // Health, keeps track of player life. (5 default) 
-    private int maxHealth = 5;
-    public int health = 5;
+    private int maxHealth = 7;
+    public int health;
 
     bool moveUp;
     bool moveDown;
@@ -41,6 +41,8 @@ public class Player : MonoBehaviour
         col = GetComponent<BoxCollider2D>();
         col.size = new Vector2(0.14f, 0.14f);
 
+        health = maxHealth;
+
         // create a new image and spawn it inside GUICanvas
         healthImage = new GameObject();
         newImage = healthImage.AddComponent<Image>();
@@ -54,8 +56,6 @@ public class Player : MonoBehaviour
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         ID = Extensions.GenerateID();
         gameObject.StoreID(ID);
-
-        maxHealth = health;
     }
 
     // Update is called once per frame
@@ -95,11 +95,11 @@ public class Player : MonoBehaviour
         }
 
         // check if health is less than and change color accordingly
-        if(health <= 3)
+        if(health <= 5)
         {
             newImage.material = Resources.Load("Yellow", typeof(Material)) as Material;
         }
-        else if(health <= 1)
+        if(health <= 2)
         {
             newImage.material = Resources.Load("Red", typeof(Material)) as Material;
         }

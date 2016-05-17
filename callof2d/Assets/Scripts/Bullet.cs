@@ -78,6 +78,11 @@ public class Bullet : MonoBehaviour {
             Destroy(gameObject);
         }
 
+        if (col.gameObject.tag == "Player")
+        {
+            player.gameObject.GetComponent<Player>().health--;
+        }
+
     }
 
 }
