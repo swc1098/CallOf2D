@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour
     public void ExecuteCommand(JSONObject Command)
     {
 
-        if (Command.HasField("spawnplayer"))
+        if (Command.HasField("spawnplayer") && !Extensions.idToObject.ContainsKey(Command.GetField("spawnplayer").str))
         {
             GameObject p = (GameObject)Instantiate(Resources.Load("Player"), FindSpawnLocation(), Quaternion.identity);
             //Debug.Log("GET: " + (int)Command.GetField("spawnplayer").n);

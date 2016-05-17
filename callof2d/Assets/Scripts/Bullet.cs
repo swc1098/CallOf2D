@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Bullet : MonoBehaviour {
+public class Bullet : MonoBehaviour
+{
 
     public GameObject player;
+    public string playerID;
     public Vector2 direction;
     public float moveSpeed;
     public string ID;
@@ -15,7 +17,8 @@ public class Bullet : MonoBehaviour {
     private JSONObject j;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         moveSpeed = 300f;
 
         body = GetComponent<Rigidbody2D>();
@@ -38,7 +41,8 @@ public class Bullet : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
 
         // Ensure lockstep is ready before issuing commands
         if (GM.lockstep.CommandReady && SocketID == GM.SocketID)
@@ -46,25 +50,35 @@ public class Bullet : MonoBehaviour {
             // Reset JSON
             j = new JSONObject();
 
+            // Set gameObject if syncing
+            if (!player)
+            {
+                player = Extensions.idToObject[playerID];
+            }
+
             // Move
             if (direction != Vector2.zero)
             {
                 j.AddField("move", true);
             }
 
-            // issue the command above
-            // Only issue commands if there are commands to issue
-            if (j.Count > 0)
-            {
-                j.AddField("gameobject", ID);
-                GM.lockstep.issuedCommands.Enqueue(j);
-            }
+            // Create and send basic JSON
+            j.AddField("gameobject", ID);
+            j.AddField("player", SocketID);
+            j.AddField("bulletobj", true);
+            j.AddField("playerID", playerID);
+            j.AddField("posX", transform.position.x);
+            j.AddField("posY", transform.position.y);
+            j.AddField("dirX", direction.x);
+            j.AddField("dirY", direction.y);
+            GM.lockstep.issuedCommands.Enqueue(j);
 
         }
 
     }
 
-    public void ExecuteCommand(JSONObject Command) {
+    public void ExecuteCommand(JSONObject Command)
+    {
 
         if (Command.HasField("move"))
         {
@@ -85,7 +99,7 @@ public class Bullet : MonoBehaviour {
 
         if (col.gameObject.tag == "Player")
         {
-            if(col.gameObject != player)
+            if (col.gameObject != player)
             {
                 col.gameObject.GetComponent<Player>().TakeDamage();
                 Destroy(gameObject);

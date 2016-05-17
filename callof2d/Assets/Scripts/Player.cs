@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     bool moveRight;
     bool shoot;
 
+    private Vector2 lastPos;
     private Rigidbody2D body;
     private BoxCollider2D col;
     private JSONObject j;
@@ -61,7 +62,8 @@ public class Player : MonoBehaviour
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    public void AssignID(string objID) {
+    public void AssignID(string objID)
+    {
         ID = objID;
         gameObject.StoreID(ID);
     }
@@ -81,21 +83,20 @@ public class Player : MonoBehaviour
             // Handle Input
             HandleInput();
 
-            // issue the command above
-            // Only issue commands if there are commands to issue
-            if (j.Count > 0)
-            {
-                j.AddField("gameobject", ID);
-                GM.lockstep.issuedCommands.Enqueue(j);
-            }
-            else
-            {
-                // Immediately decelerate
-                body.velocity = Vector2.zero;
-            }
+            // Create and send basic JSON
+            j.AddField("gameobject", ID);
+            j.AddField("player", SocketID);
+            j.AddField("playerobj", true);
+            j.AddField("health", health);
+            j.AddField("posX", transform.position.x);
+            j.AddField("posY", transform.position.y);
+            GM.lockstep.issuedCommands.Enqueue(j);
+
         }
 
         // check for player death and destroy appropriate objects
+        newImage.fillAmount = (float)health / maxHealth;
+
         if (health <= 0)
         {
             Destroy(gameObject);
@@ -104,14 +105,15 @@ public class Player : MonoBehaviour
         }
 
         // check if health is less than and change color accordingly
-        else if (health <= 5)
-        {
-            newImage.material = Resources.Load("Yellow", typeof(Material)) as Material;
-        }
         else if (health <= 2)
         {
             newImage.material = Resources.Load("Red", typeof(Material)) as Material;
         }
+        else if (health <= 5)
+        {
+            newImage.material = Resources.Load("Yellow", typeof(Material)) as Material;
+        }
+    
     }
 
     void FixedUpdate()
@@ -121,6 +123,7 @@ public class Player : MonoBehaviour
 
     public void ExecuteCommand(JSONObject Command)
     {
+        lastPos = new Vector2((float)j.GetField("posX").n, (float)j.GetField("posY").n);
 
         if (Command.HasField("move"))
         {
@@ -139,9 +142,17 @@ public class Player : MonoBehaviour
 
             body.AddForce(new Vector2(x, y), ForceMode2D.Force);
             body.velocity = Vector2.ClampMagnitude(body.velocity, moveSpeed);
+            //body.AddForce(lastPos - (Vector2)transform.position, ForceMode2D.Force); // Smoothly move towards correct position
+        }
+        else
+        {
+            // Immediately decelerate
+            body.velocity = Vector2.zero;
+            // Sync pos
+            transform.position = lastPos;
         }
 
-        if (Command.HasField("spawnbullet"))
+        if (Command.HasField("spawnbullet") && !Extensions.idToObject.ContainsKey(Command.GetField("spawnbullet").str))
         {
             GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"), transform.position, Quaternion.identity);
             bullet.GetComponent<Bullet>().AssignID(Command.GetField("spawnbullet").str);
@@ -186,7 +197,8 @@ public class Player : MonoBehaviour
         }
 
         // Shooting
-        if (shoot) {
+        if (shoot)
+        {
             j.AddField("spawnbullet", Extensions.GenerateID());
 
             Vector2 direction = (reticle.transform.position - transform.position).normalized;
@@ -199,7 +211,6 @@ public class Player : MonoBehaviour
     {
         // reduce health and have the fill amount show it.
         health--;
-        newImage.fillAmount = health / maxHealth;
     }
 
     void OnCollisionEnter(Collision col)

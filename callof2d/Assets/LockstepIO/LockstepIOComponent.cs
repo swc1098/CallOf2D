@@ -23,7 +23,7 @@ public class LockstepIOComponent : MonoBehaviour
     public bool LockstepReady;
     public long CommandDelay;
 
-    public bool IsHost;
+    private bool newPlayer;
 
     private float elapsedTime;
     private float commandWait;
@@ -99,6 +99,7 @@ public class LockstepIOComponent : MonoBehaviour
         // Synchronize lockstep with the server first
         Sync();
 
+        newPlayer = true;
         elapsedTime = 0;
         commandWait = SyncRateSec;
 
@@ -154,6 +155,28 @@ public class LockstepIOComponent : MonoBehaviour
             j = Command.GetField(executedCommandCount.ToString());
             objID = j.GetField("gameobject").str;
 
+            // Sync up worldstate with other players
+            if (newPlayer && !Extensions.idToObject.ContainsKey(objID)) {
+                if (j.HasField("playerobj"))
+                {
+                    Vector2 pos = new Vector2((float)j.GetField("posX").n, (float)j.GetField("posY").n);
+                    GameObject p = (GameObject)Instantiate(Resources.Load("Player"), pos, Quaternion.identity);
+                    p.GetComponent<Player>().AssignID(objID);
+                    p.GetComponent<Player>().SocketID = j.GetField("player").str;
+                    p.GetComponent<Player>().health = (int)j.GetField("health").n;
+                }
+                else if (j.HasField("bulletobj"))
+                {
+                    Vector2 pos = new Vector2((float)j.GetField("posX").n, (float)j.GetField("posY").n);
+                    GameObject b = (GameObject)Instantiate(Resources.Load("Bullet"), pos, Quaternion.identity);
+                    b.GetComponent<Bullet>().AssignID(objID);
+                    b.GetComponent<Bullet>().SocketID = j.GetField("player").str;
+                    b.GetComponent<Bullet>().playerID = j.GetField("playerID").str;
+                    b.GetComponent<Bullet>().direction = new Vector2((float)j.GetField("dirX").n, (float)j.GetField("dirY").n);
+                }
+            }
+
+            // Execute commands
             if (Extensions.idToObject.ContainsKey(objID))
             {
                 // Get GameObject
@@ -176,6 +199,8 @@ public class LockstepIOComponent : MonoBehaviour
 
             executedCommandCount++;
         }
+
+        newPlayer = false;
     }
 
 
@@ -262,10 +287,6 @@ public class LockstepIOComponent : MonoBehaviour
         }
         LastLockstepReadyString = debugText;
         connectingStatus.text = "Connected!";
-
-        if (clients.keys[0].Contains(Socket.SocketID)) {
-            IsHost = true;
-        }
     }
 
     private void OnCommandIssue(SocketIOEvent evt)
