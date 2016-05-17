@@ -7,6 +7,10 @@ public class Player : MonoBehaviour
     public GameObject reticle;
     public int ID;
 
+    // Health, keeps track of player life. (5 default) 
+    private int maxHealth = 5;
+    public int health = 5;
+
     bool moveUp;
     bool moveDown;
     bool moveLeft;
@@ -62,6 +66,12 @@ public class Player : MonoBehaviour
             }
         }
 
+        // check for player death
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+            GM.gameState = GameState.Lose;
+        }
     }
 
     void FixedUpdate()
@@ -93,9 +103,11 @@ public class Player : MonoBehaviour
 
         if (Command.HasField("shoot") && reticle)
         {
-            GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"), transform.position, Quaternion.identity);
+            GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"), transform.forward, Quaternion.identity);
             bullet.GetComponent<Bullet>().player = gameObject;
             bullet.GetComponent<Bullet>().direction = (reticle.transform.position - transform.position).normalized;
+
+            bullet.transform.position = gameObject.transform.position;
         }
 
     }
