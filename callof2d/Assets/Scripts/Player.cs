@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
     public GameObject healthImage;
     public Image newImage;
 
+    public GameObject bullet;
+
     // Use this for initialization
     void Start()
     {
@@ -99,11 +101,11 @@ public class Player : MonoBehaviour
         }
 
         // check if health is less than and change color accordingly
-        if(health <= 5)
+        if (health <= 5)
         {
             newImage.material = Resources.Load("Yellow", typeof(Material)) as Material;
         }
-        if(health <= 2)
+        if (health <= 2)
         {
             newImage.material = Resources.Load("Red", typeof(Material)) as Material;
         }
@@ -138,11 +140,16 @@ public class Player : MonoBehaviour
 
         if (Command.HasField("shoot") && reticle)
         {
-            GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"), transform.forward, Quaternion.identity);
+            // trying to have the bullet spawn in front of the player
+            Vector3 playerPos = gameObject.transform.position;
+            Vector3 playerDirection = gameObject.transform.forward;
+
+            bullet = (GameObject)Instantiate(Resources.Load("Bullet"), playerPos, Quaternion.identity);
             bullet.GetComponent<Bullet>().player = gameObject;
             bullet.GetComponent<Bullet>().direction = (reticle.transform.position - transform.position).normalized;
 
-            bullet.transform.position = gameObject.transform.position;
+            bullet.transform.position = playerPos;
+
         }
 
     }
@@ -180,14 +187,15 @@ public class Player : MonoBehaviour
         }
 
         // Shooting
-        if (shoot) {
+        if (shoot)
+        {
             j.AddField("shoot", true);
         }
     }
 
     void OnCollisionStay(Collision col)
     {
-        if(col.gameObject.tag == " ")
+        if (col.gameObject.tag == " ")
         {
             //
         }
