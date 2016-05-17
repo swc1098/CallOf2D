@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public Slider healthSlide;
+
     public float moveSpeed;
     public GameObject reticle;
     public int ID;
@@ -22,10 +25,13 @@ public class Player : MonoBehaviour
     private JSONObject j;
     private GameManager GM;
 
+    public Image healthImage;
+
     // Use this for initialization
     void Start()
     {
-        moveSpeed = 105f;
+        gameObject.transform.parent = GameObject.Find("GUICanvas").transform;
+        moveSpeed = 80f;
 
         body = GetComponent<Rigidbody2D>();
         body.gravityScale = 0;
@@ -38,6 +44,7 @@ public class Player : MonoBehaviour
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         ID = Extensions.GenerateID();
         gameObject.StoreID(ID);
+
     }
 
     // Update is called once per frame
@@ -71,6 +78,16 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
             GM.gameState = GameState.Lose;
+        }
+
+        // check if health is less than and change color accordingly
+        if(health <= 3)
+        {
+            healthImage.material = Resources.Load("Yellow", typeof(Material)) as Material;
+        }
+        else if(health <= 1)
+        {
+            healthImage.material = Resources.Load("Red", typeof(Material)) as Material;
         }
     }
 
@@ -150,11 +167,14 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnCollisionStay(Collision col)
     {
-        if (col.gameObject.tag == "")
+        if (col.gameObject.tag == "Bullet")
         {
-            //
+            // Take damage and show health bar change
+            Debug.Log("Damaged!");
+            health--;
+            healthImage.fillAmount -= 0.20f;
         }
     }
 
