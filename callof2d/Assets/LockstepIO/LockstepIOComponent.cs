@@ -101,7 +101,7 @@ public class LockstepIOComponent : MonoBehaviour
 
         newPlayer = true;
         elapsedTime = 0;
-        commandWait = SyncRateSec;
+        commandWait = SyncRateSec * 5;
 
         issuedCommands = new Queue<JSONObject>();
         connectingStatus = GameObject.Find("ConnectingStatusText").GetComponent<Text>();
@@ -149,6 +149,7 @@ public class LockstepIOComponent : MonoBehaviour
         JSONObject j;
         string objID;
         GameObject obj;
+        //Debug.Log("Received: " + Command.ToString());
 
         while (Command.HasField(executedCommandCount.ToString()))
         {
@@ -186,6 +187,7 @@ public class LockstepIOComponent : MonoBehaviour
                 if (obj.GetComponent<GameManager>())
                 {
                     obj.GetComponent<GameManager>().ExecuteCommand(j);
+                    //Debug.Log("Processed");
                 }
                 else if (obj.GetComponent<Player>())
                 {

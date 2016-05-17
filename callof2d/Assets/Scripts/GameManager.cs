@@ -169,6 +169,7 @@ public class GameManager : MonoBehaviour
                 //Debug.Log("OUT: " + ID);
                 //Debug.Log("OUT: " + SocketID);
                 lockstep.issuedCommands.Enqueue(j);
+                //Debug.Log("Sent: " + j.ToString());
             }
         }
 

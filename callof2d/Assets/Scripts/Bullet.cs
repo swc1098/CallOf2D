@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     public string ID;
     public string SocketID;
 
+    private Vector2 lastPos;
     private Rigidbody2D body;
     private CircleCollider2D col;
     private GameManager GM;
@@ -79,9 +80,11 @@ public class Bullet : MonoBehaviour
 
     public void ExecuteCommand(JSONObject Command)
     {
+        lastPos = new Vector2((float)Command.GetField("posX").n, (float)Command.GetField("posY").n);
 
         if (Command.HasField("move"))
         {
+            body.AddForce((lastPos - (Vector2)transform.position), ForceMode2D.Force); // Smoothly move towards correct position
             body.AddForce(new Vector2(direction.x * moveSpeed, direction.y * moveSpeed), ForceMode2D.Force);
             body.velocity = Vector2.ClampMagnitude(body.velocity, moveSpeed);
         }

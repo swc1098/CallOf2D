@@ -123,7 +123,7 @@ public class Player : MonoBehaviour
 
     public void ExecuteCommand(JSONObject Command)
     {
-        lastPos = new Vector2((float)j.GetField("posX").n, (float)j.GetField("posY").n);
+        lastPos = new Vector2((float)Command.GetField("posX").n, (float)Command.GetField("posY").n);
 
         if (Command.HasField("move"))
         {
@@ -140,16 +140,14 @@ public class Player : MonoBehaviour
                 y = (float)Command.GetField("setY").n;
             }
 
+            body.AddForce(2 * (lastPos - (Vector2)transform.position), ForceMode2D.Force); // Smoothly move towards correct position
             body.AddForce(new Vector2(x, y), ForceMode2D.Force);
             body.velocity = Vector2.ClampMagnitude(body.velocity, moveSpeed);
-            //body.AddForce(lastPos - (Vector2)transform.position, ForceMode2D.Force); // Smoothly move towards correct position
         }
         else
         {
             // Immediately decelerate
             body.velocity = Vector2.zero;
-            // Sync pos
-            transform.position = lastPos;
         }
 
         if (Command.HasField("spawnbullet") && !Extensions.idToObject.ContainsKey(Command.GetField("spawnbullet").str))
