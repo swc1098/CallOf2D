@@ -23,6 +23,8 @@ public class LockstepIOComponent : MonoBehaviour
     public bool LockstepReady;
     public long CommandDelay;
 
+    public bool IsHost;
+
     private float elapsedTime;
     private float commandWait;
     public bool CommandReady;
@@ -144,13 +146,13 @@ public class LockstepIOComponent : MonoBehaviour
     {
         executedCommandCount = 0;
         JSONObject j;
-        int objID;
+        string objID;
         GameObject obj;
 
         while (Command.HasField(executedCommandCount.ToString()))
         {
             j = Command.GetField(executedCommandCount.ToString());
-            objID = (int)j.GetField("gameobject").n;
+            objID = j.GetField("gameobject").str;
 
             if (Extensions.idToObject.ContainsKey(objID))
             {
@@ -260,6 +262,10 @@ public class LockstepIOComponent : MonoBehaviour
         }
         LastLockstepReadyString = debugText;
         connectingStatus.text = "Connected!";
+
+        if (clients.keys[0].Contains(Socket.SocketID)) {
+            IsHost = true;
+        }
     }
 
     private void OnCommandIssue(SocketIOEvent evt)

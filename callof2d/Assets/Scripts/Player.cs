@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
 {
     public float moveSpeed;
     public GameObject reticle;
-    public int ID;
+    public string ID;
     public string SocketID;
 
     bool moveUp;
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    public void AssignID(int objID) {
+    public void AssignID(string objID) {
         ID = objID;
         gameObject.StoreID(ID);
     }
@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
         if (Command.HasField("spawnbullet"))
         {
             GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"), transform.position, Quaternion.identity);
-            bullet.GetComponent<Bullet>().AssignID((int)Command.GetField("spawnbullet").n);
+            bullet.GetComponent<Bullet>().AssignID(Command.GetField("spawnbullet").str);
             bullet.GetComponent<Bullet>().SocketID = SocketID;
 
             bullet.GetComponent<Bullet>().player = gameObject;

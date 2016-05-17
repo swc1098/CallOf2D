@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour {
     public GameObject player;
     public Vector2 direction;
     public float moveSpeed;
-    public int ID;
+    public string ID;
     public string SocketID;
 
     private Rigidbody2D body;
@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour {
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    public void AssignID(int objID)
+    public void AssignID(string objID)
     {
         ID = objID;
         gameObject.StoreID(ID);

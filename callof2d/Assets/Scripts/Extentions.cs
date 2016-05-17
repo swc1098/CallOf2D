@@ -12,27 +12,21 @@ public static class Extensions
     //variable. This variable denotes which class the extension
     //method becomes a part of.
 
-    public static Dictionary<int, GameObject> idToObject = new Dictionary<int, GameObject>();
+    public static Dictionary<string, GameObject> idToObject = new Dictionary<string, GameObject>();
+    public static GameManager GM = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-    public static int GenerateID()
+    public static string GenerateID()
     {
-        int ID;
-
-        // Generate Unique ID
-        do
-        {
-            ID = Random.Range(1, int.MaxValue);
-        } while (idToObject.ContainsKey(ID));
-
-        return ID;
+        GM.IDCount += 1;
+        return GM.SocketID + GM.IDCount;
     }
 
-    public static void StoreID(this GameObject obj, int ID)
+    public static void StoreID(this GameObject obj, string ID)
     {
         idToObject.Add(ID, obj);   
     }
 
-    public static void RemoveID(this GameObject obj, int ID)
+    public static void RemoveID(this GameObject obj, string ID)
     {
         idToObject.Remove(ID);
     }

@@ -19,8 +19,9 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public GameObject mainCamera;
     public GameObject map;
-    public int ID;
+    public string ID;
     public string SocketID;
+    public int IDCount;
 
     private JSONObject j;
     private bool debugMode = false;
@@ -94,7 +95,7 @@ public class GameManager : MonoBehaviour
         lockstep.GetSocket().CloudURL = "ws://zlb3507-lockstep-io-server.herokuapp.com/socket.io/?EIO=4&transport=websocket";
         lockstep.GetSocket().LocalURL = "ws://127.0.0.1:3000/socket.io/?EIO=4&transport=websocket";
         SocketID = "";
-        ID = 0;
+        ID = "0";
         gameObject.StoreID(ID);
 
         // World Setup
@@ -162,6 +163,8 @@ public class GameManager : MonoBehaviour
             {
                 j.AddField("gameobject", ID);
                 j.AddField("player", SocketID);
+                //Debug.Log("OUT: " + ID);
+                //Debug.Log("OUT: " + SocketID);
                 lockstep.issuedCommands.Enqueue(j);
             }
         }
@@ -176,7 +179,9 @@ public class GameManager : MonoBehaviour
         if (Command.HasField("spawnplayer"))
         {
             GameObject p = (GameObject)Instantiate(Resources.Load("Player"), Vector3.zero, Quaternion.identity);
-            p.GetComponent<Player>().AssignID((int)Command.GetField("spawnplayer").n);
+            //Debug.Log("GET: " + (int)Command.GetField("spawnplayer").n);
+            //Debug.Log("GET: " + Command.GetField("player").str);
+            p.GetComponent<Player>().AssignID(Command.GetField("spawnplayer").str);
             p.GetComponent<Player>().SocketID = Command.GetField("player").str;
 
             if (p.GetComponent<Player>().SocketID == SocketID)
