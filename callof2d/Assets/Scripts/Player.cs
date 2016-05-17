@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     private GameManager GM;
 
     public GameObject healthImage;
-    private Image newImage;
+    public Image newImage;
 
     // Use this for initialization
     void Start()
@@ -44,12 +44,15 @@ public class Player : MonoBehaviour
         health = maxHealth;
 
         // create a new image and spawn it inside GUICanvas
+        // set it up so it tracks health.
         healthImage = new GameObject();
         newImage = healthImage.AddComponent<Image>();
         newImage.sprite = Resources.Load("Health", typeof(Sprite)) as Sprite;
         newImage.material = Resources.Load("Green", typeof(Material)) as Material;
         newImage.name = "HealthBar";
         newImage.rectTransform.sizeDelta = new Vector2(3.0f, 0.5f);
+        newImage.type = Image.Type.Filled;
+        newImage.fillMethod = Image.FillMethod.Horizontal;
         healthImage.transform.parent = GameObject.Find("GUICanvas").transform;
 
 
@@ -87,11 +90,12 @@ public class Player : MonoBehaviour
             }
         }
 
-        // check for player death
+        // check for player death and destroy appropriate objects
         if (health <= 0)
         {
             Destroy(gameObject);
-            GM.gameState = GameState.Lose;
+            Destroy(healthImage);
+            GM.ChangeState(GameState.Lose);
         }
 
         // check if health is less than and change color accordingly
@@ -183,6 +187,11 @@ public class Player : MonoBehaviour
 
     void OnCollisionStay(Collision col)
     {
+        if(col.gameObject.tag == " ")
+        {
+            //
+        }
+        /* This wasn't working out so I handled it in bullet.
         if (col.gameObject.tag == "Bullet")
         {
             // Take damage and show health bar change
@@ -190,6 +199,7 @@ public class Player : MonoBehaviour
             health--;
             newImage.fillAmount -= 0.20f;
         }
+        */
     }
 
 }
