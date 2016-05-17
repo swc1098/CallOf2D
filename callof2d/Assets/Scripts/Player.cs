@@ -91,6 +91,10 @@ public class Player : MonoBehaviour
                 j.AddField("setPos", true);
                 j.AddField("setX", respawnPos.x);
                 j.AddField("setY", respawnPos.y);
+
+                JSONObject stats = new JSONObject();
+                stats.AddField("deaths", 1);
+                GM.lockstep.GetSocket().Emit("deathCount", stats);
             }
 
             // Create and send basic JSON
