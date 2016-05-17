@@ -99,9 +99,10 @@ public class Player : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(gameObject);
-            Destroy(healthImage);
+            //Destroy(gameObject);
+            //Destroy(healthImage);
             GM.ChangeState(GameState.Lose);
+            health = maxHealth;
         }
 
         // check if health is less than and change color accordingly
