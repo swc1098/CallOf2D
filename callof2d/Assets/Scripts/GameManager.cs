@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     private GameObject[] menuButton;
     private GameObject[] resumeButton;
 
+    public GameObject[] spawnLocations;
+
     // Use this for initialization
     void Start()
     {
@@ -102,6 +104,7 @@ public class GameManager : MonoBehaviour
 
         mainCamera = GameObject.Find("Main Camera");
         map = GameObject.Find("Map");
+        spawnLocations = GameObject.FindGameObjectsWithTag("SpawnPoint");
 
         // Hide wall colliders
 
@@ -178,7 +181,7 @@ public class GameManager : MonoBehaviour
 
         if (Command.HasField("spawnplayer"))
         {
-            GameObject p = (GameObject)Instantiate(Resources.Load("Player"), Vector3.zero, Quaternion.identity);
+            GameObject p = (GameObject)Instantiate(Resources.Load("Player"), FindSpawnLocation(), Quaternion.identity);
             //Debug.Log("GET: " + (int)Command.GetField("spawnplayer").n);
             //Debug.Log("GET: " + Command.GetField("player").str);
             p.GetComponent<Player>().AssignID(Command.GetField("spawnplayer").str);
@@ -212,6 +215,15 @@ public class GameManager : MonoBehaviour
         {
             menus[state].SetActive(true);
         }
+    }
+
+    public Vector3 FindSpawnLocation() {
+        foreach (GameObject s in spawnLocations) {
+            if (s.GetComponent<SpawnPoint>().free) {
+                return s.transform.position;
+            }
+        }
+        return Vector3.zero;
     }
 
 }

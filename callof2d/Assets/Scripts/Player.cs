@@ -53,11 +53,10 @@ public class Player : MonoBehaviour
         newImage.sprite = Resources.Load("Health", typeof(Sprite)) as Sprite;
         newImage.material = Resources.Load("Green", typeof(Material)) as Material;
         newImage.name = "HealthBar";
-        newImage.rectTransform.sizeDelta = new Vector2(3.0f, 0.5f);
+        newImage.rectTransform.sizeDelta = new Vector2(2.0f, 0.5f);
         newImage.type = Image.Type.Filled;
         newImage.fillMethod = Image.FillMethod.Horizontal;
         healthImage.transform.parent = GameObject.Find("GUICanvas").transform;
-
 
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
@@ -105,11 +104,11 @@ public class Player : MonoBehaviour
         }
 
         // check if health is less than and change color accordingly
-        if (health <= 5)
+        else if (health <= 5)
         {
             newImage.material = Resources.Load("Yellow", typeof(Material)) as Material;
         }
-        if (health <= 2)
+        else if (health <= 2)
         {
             newImage.material = Resources.Load("Red", typeof(Material)) as Material;
         }
@@ -194,6 +193,13 @@ public class Player : MonoBehaviour
             j.AddField("dirX", direction.x);
             j.AddField("dirY", direction.y);
         }
+    }
+
+    public void TakeDamage()
+    {
+        // reduce health and have the fill amount show it.
+        health--;
+        newImage.fillAmount = health / maxHealth;
     }
 
     void OnCollisionEnter(Collision col)
