@@ -129,6 +129,13 @@ public class Player : MonoBehaviour
             transform.position = new Vector2((float)Command.GetField("setX").n, (float)Command.GetField("setY").n);
             lastPos = transform.position;
             health = maxHealth;
+            newImage.material = Resources.Load("Green", typeof(Material)) as Material;
+        }
+
+        if (Command.HasField("takedamage"))
+        {
+            TakeDamage();
+            return;
         }
 
         if (Command.HasField("move"))
@@ -242,11 +249,14 @@ public class Player : MonoBehaviour
         health--;
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "")
+        if (col.gameObject.tag == "Bullet")
         {
-            //
+            if (col.gameObject.GetComponent<Bullet>().player != gameObject)
+            {
+                j.AddField("takedamage", true);
+            }
         }
     }
 

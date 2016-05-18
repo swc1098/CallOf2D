@@ -127,7 +127,7 @@ public class Bullet : MonoBehaviour
         {
             if (col.gameObject != player)
             {
-                col.gameObject.GetComponent<Player>().TakeDamage();
+                //col.gameObject.GetComponent<Player>().TakeDamage();
                 if (SocketID == GM.SocketID)
                 {
                     j.AddField("destroy", true);
