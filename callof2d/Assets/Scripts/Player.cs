@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
 
     private Vector2 lastPos;
     private Rigidbody2D body;
-    private BoxCollider2D col;
+    private CircleCollider2D col;
     private JSONObject j;
     private GameManager GM;
 
@@ -42,8 +42,8 @@ public class Player : MonoBehaviour
         body.drag = 10;
         body.interpolation = RigidbodyInterpolation2D.Interpolate;
         body.freezeRotation = true;
-        col = GetComponent<BoxCollider2D>();
-        col.size = new Vector2(0.14f, 0.14f);
+        col = GetComponent<CircleCollider2D>();
+		col.radius = 0.07f;
 
         health = maxHealth;
 
@@ -113,6 +113,11 @@ public class Player : MonoBehaviour
 
         // Smoothly move towards correct position
         body.AddForce((lastPos - (Vector2)transform.position), ForceMode2D.Force);
+
+		// rotate player to face raticle direction
+		Vector2 direction = (reticle.transform.position - transform.position).normalized;
+		float angle = Mathf.Atan2 (direction.y, direction.x) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
     }
 
     void FixedUpdate()

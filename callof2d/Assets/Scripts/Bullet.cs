@@ -34,6 +34,10 @@ public class Bullet : MonoBehaviour
         col.isTrigger = true;
 
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+		// rotate bullet to direction
+		float angle = Mathf.Atan2 (direction.y, direction.x) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
     }
 
     public void AssignID(string objID)
