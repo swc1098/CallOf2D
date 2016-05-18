@@ -12,6 +12,12 @@ public enum GameState
     Lose
 }
 
+public enum Team
+{
+	Red = 0,
+	Blue = 1
+}
+
 public class GameManager : MonoBehaviour
 {
 

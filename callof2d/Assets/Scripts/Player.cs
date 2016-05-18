@@ -32,9 +32,15 @@ public class Player : MonoBehaviour
 
     public GameObject bullet;
 
+	
+	private Team teamState;
+	private SpriteRenderer rend;
+	private bool teamAssigned = false;
+
     // Use this for initialization
     void Start()
     {
+
         moveSpeed = 80f;
 
         body = GetComponent<Rigidbody2D>();
@@ -108,11 +114,14 @@ public class Player : MonoBehaviour
 
         }
 
+		DetermineTeam ();
+
         // Handle health bar
         HandleHealth();
 
         // Smoothly move towards correct position
         body.AddForce((lastPos - (Vector2)transform.position), ForceMode2D.Force);
+
     }
 
     void FixedUpdate()
@@ -259,5 +268,41 @@ public class Player : MonoBehaviour
             }
         }
     }
+	
+	public void DetermineTeam()
+	{
+		// set team\
+		if (teamAssigned == false) 
+		{
+			teamState = GetRandomType();
+			
+			rend = GameObject.FindWithTag("Player").GetComponent<SpriteRenderer> ();
+			
+			if (teamState == Team.Red) 
+			{
+				rend.color = Color.red;
+			}
+			if(teamState == Team.Blue)
+			{
+				rend.color = Color.blue;
+			}
+			Debug.Log(teamState);
+			teamAssigned = true;
+		}
+		
+	}
+
+	/// <summary>
+	///  // Gets a random enum by using the values existing within the enum
+	/// </summary>
+	/// <returns></returns>
+	public static Team GetRandomType ()
+	{
+		// create an array that holds the values of each ElementType
+		System.Array a = System.Enum.GetValues (typeof(Team));
+		// cycle through the array and then return a random enum type
+		return (Team)a.GetValue (Random.Range (0, a.Length));
+	}
+
 
 }

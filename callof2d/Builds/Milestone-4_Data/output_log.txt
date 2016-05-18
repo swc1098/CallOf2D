@@ -1,0 +1,259 @@
+Initialize engine version: 5.3.4f1 (fdbb5133b820)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 970 (ID=0x13c2)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: \\banner.main.ad.rit.edu\students\swc1098\IGMProfile\Documents\CallOf2DD\callof2d\Builds\Milestone-4_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading \\banner.main.ad.rit.edu\students\swc1098\IGMProfile\Documents\CallOf2DD\callof2d\Builds\Milestone-4_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: \\banner.main.ad.rit.edu\students\swc1098\IGMProfile\Documents\CallOf2DD\callof2d\Builds\Milestone-4_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading \\banner.main.ad.rit.edu\students\swc1098\IGMProfile\Documents\CallOf2DD\callof2d\Builds\Milestone-4_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: \\banner.main.ad.rit.edu\students\swc1098\IGMProfile\Documents\CallOf2DD\callof2d\Builds\Milestone-4_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading \\banner.main.ad.rit.edu\students\swc1098\IGMProfile\Documents\CallOf2DD\callof2d\Builds\Milestone-4_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: \\banner.main.ad.rit.edu\students\swc1098\IGMProfile\Documents\CallOf2DD\callof2d\Builds\Milestone-4_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading \\banner.main.ad.rit.edu\students\swc1098\IGMProfile\Documents\CallOf2DD\callof2d\Builds\Milestone-4_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  2.102 seconds
+Platform assembly: \\banner.main.ad.rit.edu\students\swc1098\IGMProfile\Documents\CallOf2DD\callof2d\Builds\Milestone-4_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: \\banner.main.ad.rit.edu\students\swc1098\IGMProfile\Documents\CallOf2DD\callof2d\Builds\Milestone-4_Data\Managed\System.dll (this message is harmless)
+Platform assembly: \\banner.main.ad.rit.edu\students\swc1098\IGMProfile\Documents\CallOf2DD\callof2d\Builds\Milestone-4_Data\Managed\Mono.Security.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 3840x1080 at -1920,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 2.074149 ms
+5/18/2016 1:51:14 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:14 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 2b78 -> priority: 1 
+5/18/2016 1:51:14 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:15 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:15 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:15 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:15 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:15 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:15 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:15 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:15 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:15 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:15 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:15 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:15 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:15 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:15 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:15 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:16 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:16 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:16 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:16 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:16 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:16 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:16 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:16 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:16 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:16 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:16 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:16 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:16 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:16 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:16 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:17 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:17 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:17 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:17 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:17 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:17 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+5/18/2016 1:51:17 PM|Error|WebSocket.Send|A WebSocket connection isn't established.
+Parent of RectTransform is being set with parent property. Consider using the SetParent method instead, with the worldPositionStays argument set to false. This will retain local orientation and scale rather than world orientation and scale, which can prevent common UI scaling issues.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.Exception: Missed Event (LAG)
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+System.ArgumentException: An element with the same key already exists in the dictionary.
+  at System.Collections.Generic.Dictionary`2[System.Int64,JSONObject].Add (Int64 key, .JSONObject value) [0x00000] in <filename unknown>:0 
+  at LockstepIOComponent.OnCommandIssue (SocketIO.SocketIOEvent evt) [0x00000] in <filename unknown>:0 
+  at SocketIO.SocketIOComponent.EmitEvent (SocketIO.SocketIOEvent ev) [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
