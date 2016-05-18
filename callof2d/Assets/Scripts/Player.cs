@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
         healthImage = new GameObject();
         newImage = healthImage.AddComponent<Image>();
         newImage.sprite = Resources.Load("Health", typeof(Sprite)) as Sprite;
-        newImage.material = Resources.Load("Green", typeof(Material)) as Material;
+        newImage.material = GM.greenMat;
         newImage.name = "HealthBar";
         newImage.rectTransform.sizeDelta = new Vector2(2.0f, 0.5f);
         newImage.type = Image.Type.Filled;
@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
 
                 JSONObject stats = new JSONObject();
                 stats.AddField("deaths", 1);
-                GM.lockstep.GetSocket().Emit("deathCount", stats);
+                GM.lockstep.GetSocket().Emit("AddDeathCount", stats);
             }
 
             // Create and send basic JSON
@@ -129,13 +129,15 @@ public class Player : MonoBehaviour
             transform.position = new Vector2((float)Command.GetField("setX").n, (float)Command.GetField("setY").n);
             lastPos = transform.position;
             health = maxHealth;
-            newImage.material = Resources.Load("Green", typeof(Material)) as Material;
         }
 
         if (Command.HasField("takedamage"))
         {
             TakeDamage();
-            return;
+            if (health <= 0)
+            {
+                return;
+            }
         }
 
         if (Command.HasField("move"))
@@ -222,30 +224,23 @@ public class Player : MonoBehaviour
         // check for player death and destroy appropriate objects
         newImage.fillAmount = (float)health / maxHealth;
 
-        /*
-        if (health <= 0)
-        {
-            //Destroy(gameObject);
-            //Destroy(healthImage);
-            health = maxHealth;
-            newImage.material = Resources.Load("Green", typeof(Material)) as Material;
-        }
-        */
-
         // check if health is less than and change color accordingly
-        if (health <= 2)
+        if (health == maxHealth)
         {
-            newImage.material = Resources.Load("Red", typeof(Material)) as Material;
+            newImage.material = GM.greenMat;
+        }
+        else if (health <= 2)
+        {
+            newImage.material = GM.redMat;
         }
         else if (health <= 5)
         {
-            newImage.material = Resources.Load("Yellow", typeof(Material)) as Material;
+            newImage.material = GM.yellowMat;
         }
     }
 
     public void TakeDamage()
     {
-        // reduce health and have the fill amount show it.
         health--;
     }
 

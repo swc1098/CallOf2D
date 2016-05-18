@@ -23,7 +23,8 @@ public class LockstepIOComponent : MonoBehaviour
     public bool LockstepReady;
     public long CommandDelay;
 
-    private bool newPlayer;
+    private int newPlayerSyncs;
+    public int NumSyncs;
 
     private float elapsedTime;
     private float commandWait;
@@ -99,7 +100,9 @@ public class LockstepIOComponent : MonoBehaviour
         // Synchronize lockstep with the server first
         Sync();
 
-        newPlayer = true;
+        newPlayerSyncs = 0;
+        NumSyncs = 5;
+
         elapsedTime = 0;
         commandWait = SyncRateSec * 10;
 
@@ -157,7 +160,11 @@ public class LockstepIOComponent : MonoBehaviour
             objID = j.GetField("gameobject").str;
 
             // Sync up worldstate with other players
-            if (newPlayer && !Extensions.idToObject.ContainsKey(objID)) {
+            if (newPlayerSyncs <= NumSyncs && !Extensions.idToObject.ContainsKey(objID)) {
+                
+                // Send data to GM
+                // Extensions.idToObject["0"].GetComponent<GameManager>().SyncBullet(j);
+
                 if (j.HasField("playerobj"))
                 {
                     Vector2 pos = new Vector2((float)j.GetField("posX").n, (float)j.GetField("posY").n);
@@ -175,6 +182,7 @@ public class LockstepIOComponent : MonoBehaviour
                     b.GetComponent<Bullet>().playerID = j.GetField("playerID").str;
                     b.GetComponent<Bullet>().direction = new Vector2((float)j.GetField("dirX").n, (float)j.GetField("dirY").n);
                 }
+                newPlayerSyncs++;
             }
 
             // Execute commands
@@ -202,7 +210,6 @@ public class LockstepIOComponent : MonoBehaviour
             executedCommandCount++;
         }
 
-        newPlayer = false;
     }
 
 

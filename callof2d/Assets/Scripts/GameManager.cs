@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     public LockstepIOComponent lockstep;
     public GameObject player;
+    public string playerID;
     public GameObject mainCamera;
     public GameObject map;
     public string ID;
@@ -37,6 +38,10 @@ public class GameManager : MonoBehaviour
     private GameObject[] resumeButton;
 
     public GameObject[] spawnLocations;
+
+    public Material greenMat;
+    public Material yellowMat;
+    public Material redMat;
 
     // Use this for initialization
     void Start()
@@ -119,6 +124,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        // Public Materials
+        greenMat = Resources.Load("Green", typeof(Material)) as Material;
+        yellowMat = Resources.Load("Yellow", typeof(Material)) as Material;
+        redMat = Resources.Load("Red", typeof(Material)) as Material;
 
         // Start game
         ChangeState(GameState.MainMenu);
@@ -157,34 +166,31 @@ public class GameManager : MonoBehaviour
             if (SocketID == "")
             {
                 SocketID = lockstep.GetSocket().SocketID;
-                j.AddField("spawnplayer", Extensions.GenerateID());
+                playerID = Extensions.GenerateID();
+            }
+            // Will result in potentially multiple calls to ensure player spawns
+            if (!player) {
+                j.AddField("spawnplayer", playerID);
             }
 
-            // issue the command above
             // Only issue commands if there are commands to issue
             if (j.Count > 0)
             {
                 j.AddField("gameobject", ID);
                 j.AddField("player", SocketID);
-                //Debug.Log("OUT: " + ID);
-                //Debug.Log("OUT: " + SocketID);
                 lockstep.issuedCommands.Enqueue(j);
                 //Debug.Log("Sent: " + j.ToString());
             }
         }
 
-        // Last gameState
-        //lastState = gameState;
     }
 
     public void ExecuteCommand(JSONObject Command)
     {
-
+        // Debug.Log("Received: " + Command.ToString());
         if (Command.HasField("spawnplayer") && !Extensions.idToObject.ContainsKey(Command.GetField("spawnplayer").str))
         {
             GameObject p = (GameObject)Instantiate(Resources.Load("Player"), FindSpawnLocation(), Quaternion.identity);
-            //Debug.Log("GET: " + (int)Command.GetField("spawnplayer").n);
-            //Debug.Log("GET: " + Command.GetField("player").str);
             p.GetComponent<Player>().AssignID(Command.GetField("spawnplayer").str);
             p.GetComponent<Player>().SocketID = Command.GetField("player").str;
 
@@ -197,6 +203,16 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+    /*
+    void RepeatCommand(string name) {
+        switch (name) {
+            case "spawnplayer":
+                j.AddField("spawnplayer", Extensions.GenerateID());
+                break;
+        }
+    }
+    */
 
     /// <summary>
     /// Change Gamestate based on current menu active
