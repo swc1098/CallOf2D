@@ -51,8 +51,8 @@ public class Player : MonoBehaviour
         // set it up so it tracks health.
         healthImage = new GameObject();
         newImage = healthImage.AddComponent<Image>();
-        newImage.sprite = Resources.Load("Health", typeof(Sprite)) as Sprite;
-        newImage.material = GM.greenMat;
+        newImage.sprite = AssetManager.HealthBar;
+        newImage.material = AssetManager.GreenMat;
         newImage.name = "HealthBar";
         newImage.rectTransform.sizeDelta = new Vector2(2.0f, 0.5f);
         newImage.type = Image.Type.Filled;
@@ -227,15 +227,15 @@ public class Player : MonoBehaviour
         // check if health is less than and change color accordingly
         if (health == maxHealth)
         {
-            newImage.material = GM.greenMat;
+            newImage.material = AssetManager.GreenMat;
         }
         else if (health <= 2)
         {
-            newImage.material = GM.redMat;
+            newImage.material = AssetManager.RedMat;
         }
         else if (health <= 5)
         {
-            newImage.material = GM.yellowMat;
+            newImage.material = AssetManager.YellowMat;
         }
     }
 

@@ -39,10 +39,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] spawnLocations;
 
-    public Material greenMat;
-    public Material yellowMat;
-    public Material redMat;
-
     // Use this for initialization
     void Start()
     {
@@ -123,11 +119,6 @@ public class GameManager : MonoBehaviour
                 wall.GetComponent<SpriteRenderer>().color = tmp;
             }
         }
-
-        // Public Materials
-        greenMat = Resources.Load("Green", typeof(Material)) as Material;
-        yellowMat = Resources.Load("Yellow", typeof(Material)) as Material;
-        redMat = Resources.Load("Red", typeof(Material)) as Material;
 
         // Start game
         ChangeState(GameState.MainMenu);
