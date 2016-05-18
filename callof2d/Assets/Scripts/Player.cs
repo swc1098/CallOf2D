@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
             {
                 GM.ChangeState(GameState.Lose);
                 Vector2 respawnPos = GM.FindRandomSpawnLocation();
-                j.AddField("setPos", true);
+                j.AddField("respawn", true);
                 j.AddField("setX", respawnPos.x);
                 j.AddField("setY", respawnPos.y);
 
@@ -111,6 +111,8 @@ public class Player : MonoBehaviour
         // Handle health bar
         HandleHealth();
 
+        // Smoothly move towards correct position
+        body.AddForce((lastPos - (Vector2)transform.position), ForceMode2D.Force);
     }
 
     void FixedUpdate()
@@ -122,9 +124,11 @@ public class Player : MonoBehaviour
     {
         lastPos = new Vector2((float)Command.GetField("posX").n, (float)Command.GetField("posY").n);
 
-        if (Command.HasField("setPos"))
+        if (Command.HasField("respawn"))
         {
             transform.position = new Vector2((float)Command.GetField("setX").n, (float)Command.GetField("setY").n);
+            lastPos = transform.position;
+            health = maxHealth;
         }
 
         if (Command.HasField("move"))
@@ -142,7 +146,6 @@ public class Player : MonoBehaviour
                 y = (float)Command.GetField("moveY").n;
             }
 
-            body.AddForce((lastPos - (Vector2)transform.position), ForceMode2D.Force); // Smoothly move towards correct position
             body.AddForce(new Vector2(x, y), ForceMode2D.Force);
             body.velocity = Vector2.ClampMagnitude(body.velocity, moveSpeed);
         }
@@ -212,6 +215,7 @@ public class Player : MonoBehaviour
         // check for player death and destroy appropriate objects
         newImage.fillAmount = (float)health / maxHealth;
 
+        /*
         if (health <= 0)
         {
             //Destroy(gameObject);
@@ -219,9 +223,10 @@ public class Player : MonoBehaviour
             health = maxHealth;
             newImage.material = Resources.Load("Green", typeof(Material)) as Material;
         }
+        */
 
         // check if health is less than and change color accordingly
-        else if (health <= 2)
+        if (health <= 2)
         {
             newImage.material = Resources.Load("Red", typeof(Material)) as Material;
         }

@@ -101,7 +101,7 @@ public class LockstepIOComponent : MonoBehaviour
 
         newPlayer = true;
         elapsedTime = 0;
-        commandWait = SyncRateSec * 5;
+        commandWait = SyncRateSec * 10;
 
         issuedCommands = new Queue<JSONObject>();
         connectingStatus = GameObject.Find("ConnectingStatusText").GetComponent<Text>();

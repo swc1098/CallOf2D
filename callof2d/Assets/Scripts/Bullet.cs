@@ -80,6 +80,8 @@ public class Bullet : MonoBehaviour
             ThisDestroy();
         }
 
+        // Smoothly move towards correct position
+        body.AddForce((lastPos - (Vector2)transform.position), ForceMode2D.Force);
     }
 
     public void ExecuteCommand(JSONObject Command)
@@ -88,7 +90,6 @@ public class Bullet : MonoBehaviour
 
         if (Command.HasField("move"))
         {
-            body.AddForce((lastPos - (Vector2)transform.position), ForceMode2D.Force); // Smoothly move towards correct position
             body.AddForce(new Vector2(direction.x * moveSpeed, direction.y * moveSpeed), ForceMode2D.Force);
             body.velocity = Vector2.ClampMagnitude(body.velocity, moveSpeed);
         }
