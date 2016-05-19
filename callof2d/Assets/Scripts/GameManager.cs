@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     private JSONObject j;
     private bool debugMode = false;
 
+	private AudioSource bgMusic;
+
     // Keep the gamestate in a constant state of rotation. 
     public GameState gameState;
     //private GameState lastState;
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
         // Menus Handler
 
         menus = new Dictionary<GameState, GameObject>();
@@ -123,6 +126,8 @@ public class GameManager : MonoBehaviour
         // Start game
         ChangeState(GameState.MainMenu);
 
+		bgMusic.GetComponent<AudioSource> ();
+		bgMusic.Play ();
     }
 
     void Connect()

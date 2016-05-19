@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public GameObject reticle;
     public string ID;
     public string SocketID;
+	public AudioClip deathSound;
 
     // Health, keeps track of player life. (5 default) 
     private int maxHealth = 7;
@@ -145,6 +146,8 @@ public class Player : MonoBehaviour
             TakeDamage();
             if (health <= 0)
             {
+				audio.clip = deathSound;
+				audio.Play ();
                 return;
             }
         }
