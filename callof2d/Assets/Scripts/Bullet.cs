@@ -129,7 +129,7 @@ public class Bullet : MonoBehaviour
 
         if (col.gameObject.tag == "Player")
         {
-            if (col.gameObject != player)
+            if (col.gameObject != player && player.GetComponent<Player>().teamState == col.gameObject.GetComponent<Player>().teamState)
             {
                 //col.gameObject.GetComponent<Player>().TakeDamage();
                 if (SocketID == GM.SocketID)
@@ -141,7 +141,9 @@ public class Bullet : MonoBehaviour
                 {
                     ThisDestroy();
                 }
+              
             }
+
         }
 
     }

@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 
     public GameObject bullet;
 
-    private Team teamState;
+    public Team teamState;
     private SpriteRenderer rend;
     private bool teamAssigned = false;
 
@@ -269,7 +269,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Bullet")
+        if (col.gameObject.tag == "Bullet" && teamState == col.gameObject.GetComponent<Player>().teamState)
         {
             if (col.gameObject.GetComponent<Bullet>().player != gameObject)
             {
@@ -306,6 +306,9 @@ public class Player : MonoBehaviour
     /// <returns></returns>
     public static Team GetRandomType()
     {
-        return (Team)Random.Range(0, 2);
+        // create an array that holds the values of each ElementType
+        System.Array a = System.Enum.GetValues(typeof(Team));
+        // cycle through the array and then return a random enum type
+        return (Team)a.GetValue(Random.Range(0, a.Length));
     }
 }
