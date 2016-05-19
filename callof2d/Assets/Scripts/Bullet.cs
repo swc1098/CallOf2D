@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
 
     private Vector2 lastPos;
     private Rigidbody2D body;
-    private CircleCollider2D col;
+    private BoxCollider2D col;
     private GameManager GM;
     private JSONObject j;
     private bool destroy;
@@ -29,8 +29,7 @@ public class Bullet : MonoBehaviour
         body.interpolation = RigidbodyInterpolation2D.Interpolate;
         body.freezeRotation = true;
         body.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-        col = GetComponent<CircleCollider2D>();
-        col.radius = 0.09f;
+        col = GetComponent<BoxCollider2D>();
         col.isTrigger = true;
 
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
