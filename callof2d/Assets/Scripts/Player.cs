@@ -1,7 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
+public enum Team
+{
+    Red = 0,
+    Blue = 1
+}
 public class Player : MonoBehaviour
 {
     public Slider healthSlide;
@@ -33,6 +37,10 @@ public class Player : MonoBehaviour
     public Image newImage;
 
     public GameObject bullet;
+
+    private Team teamState;
+    private SpriteRenderer rend;
+    private bool teamAssigned = false;
 
     // Use this for initialization
     void Start()
@@ -82,6 +90,7 @@ public class Player : MonoBehaviour
         // Ensure lockstep is ready before issuing commands
         if (GM.lockstep.CommandReady && GM.gameState == GameState.Game && SocketID == GM.SocketID)
         {
+            DetermineTeam();
             // Reset JSON
             j = new JSONObject();
 
@@ -268,5 +277,35 @@ public class Player : MonoBehaviour
             }
         }
     }
+    public void DetermineTeam()
+    {
+        // set team\
+        if (teamAssigned == false)
+        {
+            teamState = GetRandomType();
 
+            rend = GameObject.FindWithTag("Player").GetComponent<SpriteRenderer>();
+
+            if (teamState == Team.Red)
+            {
+                rend.color = Color.red;
+            }
+            if (teamState == Team.Blue)
+            {
+                rend.color = Color.blue;
+            }
+            Debug.Log(teamState);
+            teamAssigned = true;
+        }
+
+    }
+
+    /// <summary>
+    /// Gets a random enum by using the values existing within the enum
+    /// </summary>
+    /// <returns></returns>
+    public static Team GetRandomType()
+    {
+        return (Team)Random.Range(0, 2);
+    }
 }
