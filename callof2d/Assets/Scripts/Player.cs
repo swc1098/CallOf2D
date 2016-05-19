@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     private CircleCollider2D col;
     private JSONObject j;
     private GameManager GM;
+	private AudioSource audio;
 
     public GameObject healthImage;
     public Image newImage;
@@ -60,6 +61,9 @@ public class Player : MonoBehaviour
         healthImage.transform.parent = GameObject.Find("GUICanvas").transform;
 
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+		audio = GetComponent<AudioSource> ();
+
     }
 
     public void AssignID(string objID)
@@ -177,6 +181,8 @@ public class Player : MonoBehaviour
 
             bullet.GetComponent<Bullet>().player = gameObject;
             bullet.GetComponent<Bullet>().direction = new Vector2((float)Command.GetField("dirX").n, (float)Command.GetField("dirY").n);
+
+			audio.Play ();
         }
 
     }
